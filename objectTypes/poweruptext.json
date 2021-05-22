@@ -1,0 +1,15 @@
+{
+	"name": "PowerUpText",
+	"plugin-id": "Text",
+	"sid": 777190987509663,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Anchor",
+			"name": "Anchor",
+			"sid": 769151382403264
+		}
+	],
+	"effectTypes": []
+}

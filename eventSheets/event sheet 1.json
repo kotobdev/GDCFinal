@@ -1,0 +1,1334 @@
+{
+	"name": "Event sheet 1",
+	"events": [
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "TODO",
+			"description": "List of things that need done.",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Improved spawning mechanics- such as limits to amount of enemies on screen"
+				},
+				{
+					"eventType": "comment",
+					"text": "Balancing, especially with fire rate"
+				},
+				{
+					"eventType": "comment",
+					"text": "Possible wave-based spawning system, to make use of dynamic music"
+				},
+				{
+					"eventType": "comment",
+					"text": "Actual levels"
+				},
+				{
+					"eventType": "comment",
+					"text": "Import new graphics (when finished)"
+				}
+			],
+			"sid": 936926890678937
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Controls",
+			"description": "Rebinding arrows to WASD",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 316522489806999,
+							"parameters": {
+								"key": 87
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "Player",
+							"sid": 123443923137208,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "up"
+							}
+						}
+					],
+					"sid": 553635110956884
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 393309599301149,
+							"parameters": {
+								"key": 65
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "Player",
+							"sid": 901619884893829,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "left"
+							}
+						}
+					],
+					"sid": 805684272950092
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 424225525014308,
+							"parameters": {
+								"key": 83
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "Player",
+							"sid": 803293464453423,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "down"
+							}
+						}
+					],
+					"sid": 263731402221493
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 123200711881586,
+							"parameters": {
+								"key": 68
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "Player",
+							"sid": 667853718191340,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "right"
+							}
+						}
+					],
+					"sid": 106331333303394
+				}
+			],
+			"sid": 236075754225723
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-click",
+					"objectClass": "Mouse",
+					"sid": 806497921883294,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "The old shooting script, new one is much better."
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 807613345097039,
+					"parameters": {
+						"object-to-create": "PlayerBullet",
+						"layer": "0",
+						"x": "0",
+						"y": "0",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "set-x",
+					"objectClass": "PlayerBullet",
+					"sid": 406082400244226,
+					"parameters": {
+						"x": "Player.X"
+					}
+				},
+				{
+					"id": "set-y",
+					"objectClass": "PlayerBullet",
+					"sid": 762242758529893,
+					"parameters": {
+						"y": "Player.Y"
+					}
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "PlayerBullet",
+					"sid": 122062801086727,
+					"parameters": {
+						"angle": "Player.Angle"
+					}
+				}
+			],
+			"sid": 675069918162290,
+			"disabled": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 628450259557596
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Enemy navigation logic. Currently can't get around obstacles, but... oh well"
+				},
+				{
+					"id": "set-angle-toward-position",
+					"objectClass": "Enemy",
+					"sid": 915861411450480,
+					"parameters": {
+						"x": "Player.X",
+						"y": "Player.Y"
+					}
+				},
+				{
+					"id": "move-forward",
+					"objectClass": "Enemy",
+					"sid": 189219102129989,
+					"parameters": {
+						"distance": "1"
+					}
+				}
+			],
+			"sid": 459587758231711
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Wave Control",
+			"description": "Code for spawning enemies, controlling WaveActive, and using the dynamic music system.",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 174489655262768,
+							"parameters": {
+								"interval-seconds": "10"
+							}
+						},
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 778361918426658,
+							"parameters": {
+								"count": "Player.EnemyCount"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Wave based spawning system, currently WIP"
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 328490349790113,
+							"parameters": {
+								"object-to-create": "Enemy",
+								"layer": "1",
+								"x": "random(1, 1708)",
+								"y": "random(1, 960)",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 812614809194424,
+							"disabled": true,
+							"parameters": {
+								"instance-variable": "WaveActive",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 181263171024823,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "Enemy",
+									"sid": 349169505119358
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 907041153810734,
+									"parameters": {
+										"object-to-create": "SpawnParticles",
+										"layer": "0",
+										"x": "Enemy.X",
+										"y": "Enemy.Y",
+										"create-hierarchy": false
+									}
+								},
+								{
+									"type": "comment",
+									"text": "Simple enemy spawning logic, creates enemy at a random position on the map, and then makes a particle effect if it's onscreen"
+								}
+							],
+							"sid": 151865231545605
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Player",
+							"sid": 341873932091001,
+							"disabled": true,
+							"parameters": {
+								"instance-variable": "WaveActive"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-volume",
+							"objectClass": "Audio",
+							"sid": 991113559975697,
+							"parameters": {
+								"tag": "\"drumloop\"",
+								"db": "-5"
+							}
+						}
+					],
+					"sid": 893126916163676
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Player",
+							"sid": 835378116565876,
+							"parameters": {
+								"instance-variable": "WaveActive"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-volume",
+							"objectClass": "Audio",
+							"sid": 631727862098789,
+							"parameters": {
+								"tag": "\"drumloop\"",
+								"db": "-100"
+							}
+						}
+					],
+					"sid": 942382648238031
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 311436229158470,
+							"parameters": {
+								"first-value": "Enemy.Count",
+								"comparison": 3,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 798764383837819,
+							"parameters": {
+								"instance-variable": "WaveActive",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 114924721067700
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 322259923210455,
+							"parameters": {
+								"first-value": "Enemy.Count ",
+								"comparison": 4,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 436663418483201,
+							"parameters": {
+								"instance-variable": "WaveActive",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 328252516907749
+				}
+			],
+			"sid": 258996902634055
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 749679960972074
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Player rotation. "
+				},
+				{
+					"id": "set-angle-toward-position",
+					"objectClass": "Player",
+					"sid": 694887821768052,
+					"parameters": {
+						"x": "Mouse.X",
+						"y": "Mouse.Y"
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Player",
+					"sid": 100044055663217,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"max-speed": "Player.Speed"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "HealthText2",
+					"sid": 752264110177149,
+					"parameters": {
+						"text": "Player.Health & \"/\" & Player.MaxHealth"
+					}
+				},
+				{
+					"id": "acquire-target",
+					"objectClass": "Boss1",
+					"sid": 311276138364444,
+					"behaviorType": "Turret",
+					"parameters": {
+						"target": "Player"
+					}
+				}
+			],
+			"sid": 335291390102797
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 997314936295235,
+					"parameters": {
+						"interval-seconds": "Player.FireSpeed"
+					}
+				},
+				{
+					"id": "mouse-button-is-down",
+					"objectClass": "Mouse",
+					"sid": 247790883310343,
+					"parameters": {
+						"mouse-button": "left"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Autofire thing, uses the same code as the old shooting script, but is called every 0.1 seconds when the mouse is pressed down. This value could be changed for a cool speed boost."
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 693150738177082,
+					"parameters": {
+						"object-to-create": "PlayerBullet",
+						"layer": "0",
+						"x": "0",
+						"y": "0",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "set-x",
+					"objectClass": "PlayerBullet",
+					"sid": 152636981856265,
+					"parameters": {
+						"x": "Player.X"
+					}
+				},
+				{
+					"id": "set-y",
+					"objectClass": "PlayerBullet",
+					"sid": 782701031993524,
+					"parameters": {
+						"y": "Player.Y"
+					}
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "PlayerBullet",
+					"sid": 514389547098667,
+					"parameters": {
+						"angle": "Player.Angle + random(-10,10)"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "Test for dynamic audio- so when \"action\" starts, the drum loop kicks in. Will be more useful when spawning is improved"
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 443383523133977,
+					"parameters": {
+						"audio-file": "player shoot 2",
+						"loop": "not-looping",
+						"volume": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "set-volume",
+					"objectClass": "Audio",
+					"sid": 788514475652138,
+					"parameters": {
+						"tag": "\"drumloop\"",
+						"db": "-5"
+					}
+				}
+			],
+			"sid": 969639095062497
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Player",
+					"sid": 817647149482034,
+					"parameters": {
+						"object": "ComputerPart"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Powerup code- basically, it picks a number from one to the number of possible upgrades, and the code below gives an upgrade based on the number picked"
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 104838306747889,
+					"parameters": {
+						"instance-variable": "RandNum",
+						"value": "(round(random(1,3)))"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "ComputerPart",
+					"sid": 726658888627603
+				},
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "Player",
+					"sid": 264778130608038,
+					"parameters": {
+						"instance-variable": "SpawnRate",
+						"value": "Player.SpawnRate/8"
+					}
+				}
+			],
+			"sid": 963967987332278,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 133619408547175,
+							"parameters": {
+								"instance-variable": "RandNum",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-instvar",
+							"objectClass": "Player",
+							"sid": 696739426277294,
+							"parameters": {
+								"instance-variable": "Speed",
+								"value": "100"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "PowerUpText",
+							"sid": 798090924497002,
+							"parameters": {
+								"text": "\"Increased Speed!\""
+							}
+						},
+						{
+							"callFunction": "TextReset",
+							"sid": 519814749999595
+						}
+					],
+					"sid": 429495582510600
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 874017638785226,
+							"parameters": {
+								"instance-variable": "RandNum",
+								"comparison": 0,
+								"value": "2"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-instvar",
+							"objectClass": "Player",
+							"sid": 460297382053438,
+							"parameters": {
+								"instance-variable": "MaxHealth",
+								"value": "5"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 270787927705698,
+							"parameters": {
+								"instance-variable": "Health",
+								"value": "Player.MaxHealth"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "PowerUpText",
+							"sid": 608207729837800,
+							"parameters": {
+								"text": "\"Increased Health!\""
+							}
+						},
+						{
+							"callFunction": "TextReset",
+							"sid": 389605100158960
+						}
+					],
+					"sid": 253157871692443
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 573010465646730,
+							"parameters": {
+								"instance-variable": "RandNum",
+								"comparison": 0,
+								"value": "3"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Player",
+							"sid": 859679376107019,
+							"parameters": {
+								"instance-variable": "FireSpeed",
+								"value": "(Player.FireSpeed/4)"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "PowerUpText",
+							"sid": 198219923713370,
+							"parameters": {
+								"text": "\"Increased Fire Rate!\""
+							}
+						},
+						{
+							"callFunction": "TextReset",
+							"sid": 963516531607837
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Player",
+							"sid": 770345655238255,
+							"parameters": {
+								"instance-variable": "Damage",
+								"value": "(Player.Damage/6)"
+							}
+						}
+					],
+					"sid": 332799911373295
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 657993264206899
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Starts the music, with drums muted"
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 101691800318478,
+					"parameters": {
+						"audio-file": "FinalGameLoopMain",
+						"loop": "looping",
+						"volume": "-5",
+						"tag-optional": "\"mainloop\""
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 551745165047526,
+					"parameters": {
+						"audio-file": "FinalGameLoopDrums",
+						"loop": "looping",
+						"volume": "-100",
+						"tag-optional": "\"drumloop\""
+					}
+				}
+			],
+			"sid": 445246720146650,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 696527027623427,
+							"parameters": {
+								"count": "10"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 507358827562650,
+							"parameters": {
+								"object-to-create": "ComputerPart",
+								"layer": "0",
+								"x": "random(0, LayoutWidth)",
+								"y": "random(0, LayoutHeight)",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Creates ten ComputerParts on a random space on the map. Probably a placeholder for now"
+						}
+					],
+					"sid": 825672316295792
+				}
+			]
+		},
+		{
+			"functionName": "TextReset",
+			"functionDescription": "Resets text for power up display",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Turms off text after two seconds. It doesn't work when picking up multiple ComputerParts in two seconds, but that shouldn't happen in the finished game anyways."
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 554402599547766,
+					"parameters": {
+						"seconds": "2"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "PowerUpText",
+					"sid": 616980457680211,
+					"parameters": {
+						"text": "\"\""
+					}
+				}
+			],
+			"sid": 484423014970804
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Enemy Damage Code",
+			"description": "Code for the different ways enemies take damage",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "PlayerBullet",
+							"sid": 271158791451019,
+							"parameters": {
+								"object": "Enemy"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Bullet logic for collisions."
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Enemy",
+							"sid": 218485657367205,
+							"parameters": {
+								"instance-variable": "Health",
+								"value": "Player.Damage"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 861516108852441,
+							"parameters": {
+								"object-to-create": "HitParticle",
+								"layer": "0",
+								"x": "PlayerBullet.X",
+								"y": "PlayerBullet.Y",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "PlayerBullet",
+							"sid": 225051477314832
+						},
+						{
+							"id": "set-angle-toward-position",
+							"objectClass": "HitParticle",
+							"sid": 993771690668944,
+							"parameters": {
+								"x": "Enemy.X",
+								"y": "Enemy.Y"
+							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "Enemy",
+							"sid": 745440039959271,
+							"parameters": {
+								"color": "rgbEx(255,255 - (Enemy.Health * 25), 255 - (Enemy.Health * 25))"
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 925721951823990,
+							"parameters": {
+								"audio-file": "enemy hit 1 fix",
+								"loop": "not-looping",
+								"volume": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 861044933866509
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "PlayerBullet",
+							"sid": 734028391165514,
+							"parameters": {
+								"object": "Boss1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Bullet logic for collisions."
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Boss1",
+							"sid": 107100521792076,
+							"parameters": {
+								"instance-variable": "Health",
+								"value": "Player.Damage"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 241043012259193,
+							"parameters": {
+								"object-to-create": "HitParticle",
+								"layer": "0",
+								"x": "PlayerBullet.X",
+								"y": "PlayerBullet.Y",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "PlayerBullet",
+							"sid": 968222427125957
+						},
+						{
+							"id": "set-angle-toward-position",
+							"objectClass": "HitParticle",
+							"sid": 503852076930705,
+							"parameters": {
+								"x": "Enemy.X",
+								"y": "Enemy.Y"
+							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "Boss1",
+							"sid": 498402026486723,
+							"parameters": {
+								"color": "rgbEx((Enemy.Health * 2), 0, 0)"
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 585409192348598,
+							"parameters": {
+								"audio-file": "enemy hit 1 fix",
+								"loop": "not-looping",
+								"volume": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 525609635952605
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemy",
+							"sid": 151111365861363,
+							"parameters": {
+								"instance-variable": "Health",
+								"comparison": 3,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Enemy destruction logic. Todo: add global score variable"
+						},
+						{
+							"id": "destroy",
+							"objectClass": "Enemy",
+							"sid": 700423092780272
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 239549402468307,
+							"parameters": {
+								"object-to-create": "EDeathParticle",
+								"layer": "0",
+								"x": "Enemy.X",
+								"y": "Enemy.Y",
+								"create-hierarchy": false
+							}
+						}
+					],
+					"sid": 809985859291401
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Boss1",
+							"sid": 666429221809256,
+							"parameters": {
+								"instance-variable": "Health",
+								"comparison": 3,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Enemy destruction logic. Todo: add global score variable"
+						},
+						{
+							"id": "destroy",
+							"objectClass": "Boss1",
+							"sid": 669967916457139
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 712094034533087,
+							"parameters": {
+								"object-to-create": "EDeathParticle",
+								"layer": "0",
+								"x": "Boss1.X",
+								"y": "Boss1.Y",
+								"create-hierarchy": false
+							}
+						}
+					],
+					"sid": 520382698479328
+				}
+			],
+			"sid": 771796505356910
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Player Damage Code",
+			"description": "Code for the different ways the player takes damage",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Player",
+							"sid": 761941640186525,
+							"parameters": {
+								"object": "Enemy"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Player",
+							"sid": 496569849933311,
+							"parameters": {
+								"instance-variable": "Invincible"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "When the player takes damage, subtracts one health and makes them invincible for a second via the InvincibleTimer function..."
+						},
+						{
+							"id": "destroy",
+							"objectClass": "Enemy",
+							"sid": 460986140131518
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Player",
+							"sid": 754743205188907,
+							"parameters": {
+								"instance-variable": "Health",
+								"value": "1"
+							}
+						},
+						{
+							"callFunction": "InvincibleTimer",
+							"sid": 631856139154268
+						}
+					],
+					"sid": 963008382419719
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Player",
+							"sid": 613655139962918,
+							"parameters": {
+								"object": "BossBullet"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Player",
+							"sid": 503023885460356,
+							"parameters": {
+								"instance-variable": "Invincible"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "BossBullet",
+							"sid": 998879533260823
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Player",
+							"sid": 662045942060042,
+							"parameters": {
+								"instance-variable": "Health",
+								"value": "1"
+							}
+						},
+						{
+							"callFunction": "InvincibleTimer",
+							"sid": 817429148625573
+						}
+					],
+					"sid": 212891639379400
+				},
+				{
+					"functionName": "InvincibleTimer",
+					"functionDescription": "Counts down to making the player un-invincible",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "...which is located down here"
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 879281571539843,
+							"parameters": {
+								"instance-variable": "Invincible",
+								"value": "true"
+							}
+						},
+						{
+							"id": "flash",
+							"objectClass": "Player",
+							"sid": 382524661021670,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "1.0"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 224363411991173,
+							"parameters": {
+								"seconds": "1"
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 705822196120566,
+							"parameters": {
+								"instance-variable": "Invincible",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 965268148619037
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 492472941892897,
+							"parameters": {
+								"instance-variable": "Health",
+								"comparison": 3,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "when the guy dies, he dies"
+						},
+						{
+							"id": "destroy",
+							"objectClass": "Player",
+							"sid": 123264099540298
+						}
+					],
+					"sid": 863428019057168
+				}
+			],
+			"sid": 805310205349667
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "Boss1",
+					"sid": 511861013684820
+				}
+			],
+			"actions": [
+				{
+					"id": "acquire-target",
+					"objectClass": "Boss1",
+					"sid": 494814894066050,
+					"behaviorType": "Turret",
+					"parameters": {
+						"target": "Player"
+					}
+				}
+			],
+			"sid": 483365295101332
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-shoot",
+					"objectClass": "Boss1",
+					"sid": 883988441942017,
+					"behaviorType": "Turret"
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 222593859748555,
+					"parameters": {
+						"object-to-create": "BossBullet",
+						"layer": "0",
+						"x": "Boss1.x",
+						"y": "Boss1.y",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "BossBullet",
+					"sid": 111474209830380,
+					"parameters": {
+						"angle": "Boss1.Angle"
+					}
+				}
+			],
+			"sid": 143653464596438
+		}
+	],
+	"sid": 134333933306943
+}

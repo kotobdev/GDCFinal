@@ -1,0 +1,75 @@
+{
+	"name": "Enemy",
+	"plugin-id": "Sprite",
+	"sid": 612739795110283,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "Health",
+			"type": "number",
+			"desc": "",
+			"sid": 986958451500211
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 380925142110235
+		},
+		{
+			"behaviorId": "Physics",
+			"name": "Physics",
+			"sid": 189191293867668
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 200,
+						"height": 200,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2056323,
+						"collisionPoly": {
+							"points": [
+								0.9938271604938271,
+								0.5,
+								0.9320987654320988,
+								0.9259259259259259,
+								0.5,
+								0.9876543209876543,
+								0.07407407407407407,
+								0.9259259259259259,
+								0.012345679012345734,
+								0.5,
+								0.07407407407407407,
+								0.06790123456790123,
+								0.5,
+								0.006172839506172839,
+								0.9320987654320988,
+								0.06790123456790123
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 601783660592769,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

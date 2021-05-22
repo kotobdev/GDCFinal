@@ -1,0 +1,21 @@
+{
+	"name": "Audio",
+	"plugin-id": "Audio",
+	"sid": 269001054268377,
+	"singleglobal-inst": {
+		"type": "Audio",
+		"properties": {
+			"timescale-audio": "sounds-and-music",
+			"save-load": "all",
+			"play-in-background": true,
+			"latency-hint": "interactive",
+			"panning-model": "equal-power",
+			"distance-model": "inverse",
+			"listener-z-height": 600,
+			"reference-distance": 600,
+			"maximum-distance": 10000,
+			"roll-off-factor": 1
+		},
+		"uid": 14
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "GunParticle",
+	"plugin-id": "Particles",
+	"sid": 643401496591381,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 252,
+		"height": 252,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "png",
+		"exportQuality": 0.8,
+		"imageSpriteId": 8549937,
+		"useCollisionPoly": true
+	}
+}

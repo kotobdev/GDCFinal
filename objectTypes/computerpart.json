@@ -1,0 +1,37 @@
+{
+	"name": "ComputerPart",
+	"plugin-id": "Sprite",
+	"sid": 884477900654417,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 207,
+						"height": 205,
+						"originX": 0.5169082125603864,
+						"originY": 0.5121951219512195,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 7443911,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 524803428522391,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

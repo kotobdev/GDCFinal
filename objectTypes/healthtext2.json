@@ -1,0 +1,15 @@
+{
+	"name": "HealthText2",
+	"plugin-id": "Text",
+	"sid": 714574375090458,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Anchor",
+			"name": "Anchor",
+			"sid": 862441270438320
+		}
+	],
+	"effectTypes": []
+}

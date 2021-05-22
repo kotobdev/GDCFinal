@@ -1,0 +1,145 @@
+{
+	"name": "Player",
+	"plugin-id": "Sprite",
+	"sid": 548555084060163,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "RandNum",
+			"type": "number",
+			"desc": "Random number used for powerup calculation",
+			"sid": 116074543906933
+		},
+		{
+			"name": "Speed",
+			"type": "number",
+			"desc": "",
+			"sid": 121215506194115
+		},
+		{
+			"name": "Health",
+			"type": "number",
+			"desc": "",
+			"sid": 744020868448008
+		},
+		{
+			"name": "MaxHealth",
+			"type": "number",
+			"desc": "",
+			"sid": 532998429909187
+		},
+		{
+			"name": "FireSpeed",
+			"type": "number",
+			"desc": "",
+			"sid": 432925785025379
+		},
+		{
+			"name": "SpawnRate",
+			"type": "number",
+			"desc": "Spawn rate for enemies.",
+			"sid": 208539292408591
+		},
+		{
+			"name": "Invincible",
+			"type": "boolean",
+			"desc": "If the player is invincible to attacks or not.",
+			"sid": 476453831982747
+		},
+		{
+			"name": "Damage",
+			"type": "number",
+			"desc": "How much damage the player does.",
+			"sid": 218770638154943
+		},
+		{
+			"name": "EnemyCount",
+			"type": "number",
+			"desc": "How many enemies to spawn per wave",
+			"sid": 987514633321027
+		},
+		{
+			"name": "MaxEnemies",
+			"type": "number",
+			"desc": "Maximum amount of enemies that can be on screen (WIP)",
+			"sid": 201128458060440
+		},
+		{
+			"name": "WaveActive",
+			"type": "boolean",
+			"desc": "If a wave is active or not.",
+			"sid": 695998153295017
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "EightDir",
+			"name": "8Direction",
+			"sid": 507857879403490
+		},
+		{
+			"behaviorId": "scrollto",
+			"name": "ScrollTo",
+			"sid": 871011810518526
+		},
+		{
+			"behaviorId": "bound",
+			"name": "BoundToLayout",
+			"sid": 270428845472598
+		},
+		{
+			"behaviorId": "Flash",
+			"name": "Flash",
+			"sid": 337969329738774
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 14,
+						"height": 12,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 1678460,
+						"collisionPoly": {
+							"points": [
+								0.14285714285714285,
+								0.16666666666666666,
+								0.5,
+								0.08333333333333333,
+								0.7857142857142857,
+								0.16666666666666666,
+								0.8571428571428571,
+								0.5,
+								0.7857142857142857,
+								0.75,
+								0.5,
+								0.8333333333333334,
+								0.14285714285714285,
+								0.75,
+								0.07142857142857142,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 585409076070536,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}
