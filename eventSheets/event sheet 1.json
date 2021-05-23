@@ -1625,6 +1625,16 @@
 					}
 				},
 				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 232661051117481,
+					"parameters": {
+						"effect": "\"AdjustHSL\"",
+						"parameter-index": "2",
+						"value": "100"
+					}
+				},
+				{
 					"id": "stop-all",
 					"objectClass": "Audio",
 					"sid": 887609316828515
@@ -1635,6 +1645,33 @@
 					"sid": 746954222055443,
 					"parameters": {
 						"layout": "MainMenu"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 472216995345637,
+					"parameters": {
+						"variable": "isDoingTheThing",
+						"value": "false"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 579935366913419,
+					"parameters": {
+						"variable": "BossDestroyed",
+						"value": "false"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 460954585455420,
+					"parameters": {
+						"variable": "BossSpawned",
+						"value": "false"
 					}
 				},
 				{
