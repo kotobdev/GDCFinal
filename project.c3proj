@@ -222,7 +222,8 @@
 			"InstructionText",
 			"Text2",
 			"Button",
-			"Browser"
+			"Browser",
+			"Text3"
 		],
 		"subfolders": []
 	},

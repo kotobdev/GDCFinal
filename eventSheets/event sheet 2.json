@@ -66,12 +66,12 @@
 			],
 			"actions": [
 				{
-					"id": "open-url-in-new-window",
+					"id": "go-to-url",
 					"objectClass": "Browser",
-					"sid": 774146714727189,
+					"sid": 340815784884731,
 					"parameters": {
 						"url": "\"https://github.com/kotobdev/GDCFinal\"",
-						"tag": "\"GitPage\""
+						"target": "self"
 					}
 				}
 			],
