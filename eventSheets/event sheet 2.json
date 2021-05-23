@@ -54,6 +54,28 @@
 				}
 			],
 			"sid": 519071415235394
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "Button2",
+					"sid": 642324710947285
+				}
+			],
+			"actions": [
+				{
+					"id": "open-url-in-new-window",
+					"objectClass": "Browser",
+					"sid": 774146714727189,
+					"parameters": {
+						"url": "\"https://github.com/kotobdev/GDCFinal\"",
+						"tag": "\"GitPage\""
+					}
+				}
+			],
+			"sid": 878451138126207
 		}
 	],
 	"sid": 111556196072833
