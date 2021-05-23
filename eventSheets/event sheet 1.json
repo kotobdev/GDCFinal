@@ -2,6 +2,16 @@
 	"name": "Event sheet 1",
 	"events": [
 		{
+			"eventType": "variable",
+			"name": "BossSpaned",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 460393767004042
+		},
+		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "TODO",
@@ -142,6 +152,626 @@
 			"sid": 236075754225723
 		},
 		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Enemy Damage Code",
+			"description": "Code for the different ways enemies take damage",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "PlayerBullet",
+							"sid": 726858196009755,
+							"parameters": {
+								"object": "Enemy"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Bullet logic for collisions."
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Enemy",
+							"sid": 591540794842820,
+							"parameters": {
+								"instance-variable": "Health",
+								"value": "Player.Damage"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 666754527512103,
+							"parameters": {
+								"object-to-create": "HitParticle",
+								"layer": "0",
+								"x": "PlayerBullet.X",
+								"y": "PlayerBullet.Y",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "PlayerBullet",
+							"sid": 541708085808145
+						},
+						{
+							"id": "set-angle-toward-position",
+							"objectClass": "HitParticle",
+							"sid": 330428695166353,
+							"parameters": {
+								"x": "Enemy.X",
+								"y": "Enemy.Y"
+							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "Enemy",
+							"sid": 422626627520015,
+							"disabled": true,
+							"parameters": {
+								"color": "rgbEx(255,255 - (Enemy.Health * 25), 255 - (Enemy.Health * 25))"
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 355621851417721,
+							"parameters": {
+								"audio-file": "enemy hit 1 fix",
+								"loop": "not-looping",
+								"volume": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 843370422604591
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "PlayerBullet",
+							"sid": 561263806182873,
+							"parameters": {
+								"object": "Boss1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Bullet logic for collisions."
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Boss1",
+							"sid": 525061467713418,
+							"parameters": {
+								"instance-variable": "Health",
+								"value": "Player.Damage"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 697023554873280,
+							"parameters": {
+								"object-to-create": "HitParticle",
+								"layer": "0",
+								"x": "PlayerBullet.X",
+								"y": "PlayerBullet.Y",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "PlayerBullet",
+							"sid": 769972540197651
+						},
+						{
+							"id": "set-angle-toward-position",
+							"objectClass": "HitParticle",
+							"sid": 145279513989158,
+							"parameters": {
+								"x": "Enemy.X",
+								"y": "Enemy.Y"
+							}
+						},
+						{
+							"id": "set-default-color",
+							"objectClass": "Boss1",
+							"sid": 276343353814257,
+							"disabled": true,
+							"parameters": {
+								"color": "rgbEx((Enemy.Health * 2), 0, 0)"
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 930525496856602,
+							"parameters": {
+								"audio-file": "enemy hit 1 fix",
+								"loop": "not-looping",
+								"volume": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 473522092326420
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Enemy",
+							"sid": 832803427013969,
+							"parameters": {
+								"instance-variable": "Health",
+								"comparison": 3,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Enemy destruction logic. Todo: add global score variable"
+						},
+						{
+							"id": "destroy",
+							"objectClass": "Enemy",
+							"sid": 424163082323998
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 944874490957269,
+							"parameters": {
+								"object-to-create": "EDeathParticle",
+								"layer": "0",
+								"x": "Enemy.X",
+								"y": "Enemy.Y",
+								"create-hierarchy": false
+							}
+						}
+					],
+					"sid": 586076429744640
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Boss1",
+							"sid": 100168213688436,
+							"parameters": {
+								"instance-variable": "Health",
+								"comparison": 3,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Enemy destruction logic. Todo: add global score variable"
+						},
+						{
+							"id": "destroy",
+							"objectClass": "Boss1",
+							"sid": 346174225582735
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 370669777633046,
+							"parameters": {
+								"object-to-create": "EDeathParticle",
+								"layer": "0",
+								"x": "Boss1.X",
+								"y": "Boss1.Y",
+								"create-hierarchy": false
+							}
+						}
+					],
+					"sid": 219760235100846
+				},
+				{
+					"eventType": "comment",
+					"text": "I couldn't figure out a good way to implement the enemies getting \"redder\" as they took damage, so i'm disabling that for now"
+				}
+			],
+			"sid": 989065880337365
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Player Damage Code",
+			"description": "Code for the different ways the player takes damage",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Player",
+							"sid": 955875128710677,
+							"parameters": {
+								"object": "Enemy"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Player",
+							"sid": 101321448613792,
+							"parameters": {
+								"instance-variable": "Invincible"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "When the player takes damage, subtracts one health and makes them invincible for a second via the InvincibleTimer function..."
+						},
+						{
+							"id": "destroy",
+							"objectClass": "Enemy",
+							"sid": 986219091922745
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Player",
+							"sid": 578049852224075,
+							"parameters": {
+								"instance-variable": "Health",
+								"value": "1"
+							}
+						},
+						{
+							"callFunction": "InvincibleTimer",
+							"sid": 959087270620795
+						}
+					],
+					"sid": 518503976560850
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Player",
+							"sid": 354120945235355,
+							"parameters": {
+								"object": "BossBullet"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Player",
+							"sid": 633159844428604,
+							"parameters": {
+								"instance-variable": "Invincible"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "BossBullet",
+							"sid": 180456222892593
+						},
+						{
+							"id": "subtract-from-instvar",
+							"objectClass": "Player",
+							"sid": 644416620119509,
+							"parameters": {
+								"instance-variable": "Health",
+								"value": "1"
+							}
+						},
+						{
+							"callFunction": "InvincibleTimer",
+							"sid": 840319553733057
+						}
+					],
+					"sid": 717871951963497
+				},
+				{
+					"functionName": "InvincibleTimer",
+					"functionDescription": "Counts down to making the player un-invincible",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "...which is located down here"
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 252092851616876,
+							"parameters": {
+								"instance-variable": "Invincible",
+								"value": "true"
+							}
+						},
+						{
+							"id": "flash",
+							"objectClass": "Player",
+							"sid": 325661235262599,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "1.0"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 755799120111390,
+							"parameters": {
+								"seconds": "1"
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 546257931271049,
+							"parameters": {
+								"instance-variable": "Invincible",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 554544241517725
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 704662888284385,
+							"parameters": {
+								"instance-variable": "Health",
+								"comparison": 3,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "when the guy dies, he dies"
+						},
+						{
+							"id": "destroy",
+							"objectClass": "Player",
+							"sid": 581805828745797
+						}
+					],
+					"sid": 320781961756085
+				}
+			],
+			"sid": 543136358691209
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Wave Control",
+			"description": "Code for spawning enemies, controlling WaveActive, and using the dynamic music system.",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 108221285704662,
+							"parameters": {
+								"interval-seconds": "10"
+							}
+						},
+						{
+							"id": "repeat",
+							"objectClass": "System",
+							"sid": 143376129966158,
+							"parameters": {
+								"count": "Player.EnemyCount"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Wave based spawning system, currently WIP"
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 456347035459223,
+							"parameters": {
+								"object-to-create": "Enemy",
+								"layer": "1",
+								"x": "random(1, 1708)",
+								"y": "random(1, 960)",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 765057615927426,
+							"disabled": true,
+							"parameters": {
+								"instance-variable": "WaveActive",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 419935621262807,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "Enemy",
+									"sid": 173972276563192
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 179023222315271,
+									"parameters": {
+										"object-to-create": "SpawnParticles",
+										"layer": "0",
+										"x": "Enemy.X",
+										"y": "Enemy.Y",
+										"create-hierarchy": false
+									}
+								},
+								{
+									"type": "comment",
+									"text": "Simple enemy spawning logic, creates enemy at a random position on the map, and then makes a particle effect if it's onscreen"
+								}
+							],
+							"sid": 677407170032879
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Player",
+							"sid": 329800238983888,
+							"disabled": true,
+							"parameters": {
+								"instance-variable": "WaveActive"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-volume",
+							"objectClass": "Audio",
+							"sid": 409556035199272,
+							"parameters": {
+								"tag": "\"drumloop\"",
+								"db": "-5"
+							}
+						}
+					],
+					"sid": 353325426172809
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Player",
+							"sid": 260576293993427,
+							"parameters": {
+								"instance-variable": "WaveActive"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-volume",
+							"objectClass": "Audio",
+							"sid": 472890470142079,
+							"parameters": {
+								"tag": "\"drumloop\"",
+								"db": "-100"
+							}
+						}
+					],
+					"sid": 343233653599892
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 846844563161364,
+							"parameters": {
+								"first-value": "Enemy.Count",
+								"comparison": 3,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 196622314262148,
+							"parameters": {
+								"instance-variable": "WaveActive",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 691247945184364
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 262988557434315,
+							"parameters": {
+								"first-value": "Enemy.Count ",
+								"comparison": 4,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 851735027648359,
+							"parameters": {
+								"instance-variable": "WaveActive",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 132781945613948
+				}
+			],
+			"sid": 295398088820002
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -232,203 +862,6 @@
 				}
 			],
 			"sid": 459587758231711
-		},
-		{
-			"eventType": "group",
-			"disabled": false,
-			"title": "Wave Control",
-			"description": "Code for spawning enemies, controlling WaveActive, and using the dynamic music system.",
-			"isActiveOnStart": true,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "every-x-seconds",
-							"objectClass": "System",
-							"sid": 174489655262768,
-							"parameters": {
-								"interval-seconds": "10"
-							}
-						},
-						{
-							"id": "repeat",
-							"objectClass": "System",
-							"sid": 778361918426658,
-							"parameters": {
-								"count": "Player.EnemyCount"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "Wave based spawning system, currently WIP"
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 328490349790113,
-							"parameters": {
-								"object-to-create": "Enemy",
-								"layer": "1",
-								"x": "random(1, 1708)",
-								"y": "random(1, 960)",
-								"create-hierarchy": false
-							}
-						},
-						{
-							"id": "set-boolean-instvar",
-							"objectClass": "Player",
-							"sid": 812614809194424,
-							"disabled": true,
-							"parameters": {
-								"instance-variable": "WaveActive",
-								"value": "true"
-							}
-						}
-					],
-					"sid": 181263171024823,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-on-screen",
-									"objectClass": "Enemy",
-									"sid": 349169505119358
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 907041153810734,
-									"parameters": {
-										"object-to-create": "SpawnParticles",
-										"layer": "0",
-										"x": "Enemy.X",
-										"y": "Enemy.Y",
-										"create-hierarchy": false
-									}
-								},
-								{
-									"type": "comment",
-									"text": "Simple enemy spawning logic, creates enemy at a random position on the map, and then makes a particle effect if it's onscreen"
-								}
-							],
-							"sid": 151865231545605
-						}
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "Player",
-							"sid": 341873932091001,
-							"disabled": true,
-							"parameters": {
-								"instance-variable": "WaveActive"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-volume",
-							"objectClass": "Audio",
-							"sid": 991113559975697,
-							"parameters": {
-								"tag": "\"drumloop\"",
-								"db": "-5"
-							}
-						}
-					],
-					"sid": 893126916163676
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "Player",
-							"sid": 835378116565876,
-							"parameters": {
-								"instance-variable": "WaveActive"
-							},
-							"isInverted": true
-						}
-					],
-					"actions": [
-						{
-							"id": "set-volume",
-							"objectClass": "Audio",
-							"sid": 631727862098789,
-							"parameters": {
-								"tag": "\"drumloop\"",
-								"db": "-100"
-							}
-						}
-					],
-					"sid": 942382648238031
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-two-values",
-							"objectClass": "System",
-							"sid": 311436229158470,
-							"parameters": {
-								"first-value": "Enemy.Count",
-								"comparison": 3,
-								"second-value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-boolean-instvar",
-							"objectClass": "Player",
-							"sid": 798764383837819,
-							"parameters": {
-								"instance-variable": "WaveActive",
-								"value": "false"
-							}
-						}
-					],
-					"sid": 114924721067700
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-two-values",
-							"objectClass": "System",
-							"sid": 322259923210455,
-							"parameters": {
-								"first-value": "Enemy.Count ",
-								"comparison": 4,
-								"second-value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-boolean-instvar",
-							"objectClass": "Player",
-							"sid": 436663418483201,
-							"parameters": {
-								"instance-variable": "WaveActive",
-								"value": "true"
-							}
-						}
-					],
-					"sid": 328252516907749
-				}
-			],
-			"sid": 258996902634055
 		},
 		{
 			"eventType": "block",
@@ -857,423 +1290,6 @@
 			"sid": 484423014970804
 		},
 		{
-			"eventType": "group",
-			"disabled": false,
-			"title": "Enemy Damage Code",
-			"description": "Code for the different ways enemies take damage",
-			"isActiveOnStart": true,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-collision-with-another-object",
-							"objectClass": "PlayerBullet",
-							"sid": 271158791451019,
-							"parameters": {
-								"object": "Enemy"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "Bullet logic for collisions."
-						},
-						{
-							"id": "subtract-from-instvar",
-							"objectClass": "Enemy",
-							"sid": 218485657367205,
-							"parameters": {
-								"instance-variable": "Health",
-								"value": "Player.Damage"
-							}
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 861516108852441,
-							"parameters": {
-								"object-to-create": "HitParticle",
-								"layer": "0",
-								"x": "PlayerBullet.X",
-								"y": "PlayerBullet.Y",
-								"create-hierarchy": false
-							}
-						},
-						{
-							"id": "destroy",
-							"objectClass": "PlayerBullet",
-							"sid": 225051477314832
-						},
-						{
-							"id": "set-angle-toward-position",
-							"objectClass": "HitParticle",
-							"sid": 993771690668944,
-							"parameters": {
-								"x": "Enemy.X",
-								"y": "Enemy.Y"
-							}
-						},
-						{
-							"id": "set-default-color",
-							"objectClass": "Enemy",
-							"sid": 745440039959271,
-							"parameters": {
-								"color": "rgbEx(255,255 - (Enemy.Health * 25), 255 - (Enemy.Health * 25))"
-							}
-						},
-						{
-							"id": "play",
-							"objectClass": "Audio",
-							"sid": 925721951823990,
-							"parameters": {
-								"audio-file": "enemy hit 1 fix",
-								"loop": "not-looping",
-								"volume": "0",
-								"tag-optional": "\"\""
-							}
-						}
-					],
-					"sid": 861044933866509
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-collision-with-another-object",
-							"objectClass": "PlayerBullet",
-							"sid": 734028391165514,
-							"parameters": {
-								"object": "Boss1"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "Bullet logic for collisions."
-						},
-						{
-							"id": "subtract-from-instvar",
-							"objectClass": "Boss1",
-							"sid": 107100521792076,
-							"parameters": {
-								"instance-variable": "Health",
-								"value": "Player.Damage"
-							}
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 241043012259193,
-							"parameters": {
-								"object-to-create": "HitParticle",
-								"layer": "0",
-								"x": "PlayerBullet.X",
-								"y": "PlayerBullet.Y",
-								"create-hierarchy": false
-							}
-						},
-						{
-							"id": "destroy",
-							"objectClass": "PlayerBullet",
-							"sid": 968222427125957
-						},
-						{
-							"id": "set-angle-toward-position",
-							"objectClass": "HitParticle",
-							"sid": 503852076930705,
-							"parameters": {
-								"x": "Enemy.X",
-								"y": "Enemy.Y"
-							}
-						},
-						{
-							"id": "set-default-color",
-							"objectClass": "Boss1",
-							"sid": 498402026486723,
-							"parameters": {
-								"color": "rgbEx((Enemy.Health * 2), 0, 0)"
-							}
-						},
-						{
-							"id": "play",
-							"objectClass": "Audio",
-							"sid": 585409192348598,
-							"parameters": {
-								"audio-file": "enemy hit 1 fix",
-								"loop": "not-looping",
-								"volume": "0",
-								"tag-optional": "\"\""
-							}
-						}
-					],
-					"sid": 525609635952605
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Enemy",
-							"sid": 151111365861363,
-							"parameters": {
-								"instance-variable": "Health",
-								"comparison": 3,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "Enemy destruction logic. Todo: add global score variable"
-						},
-						{
-							"id": "destroy",
-							"objectClass": "Enemy",
-							"sid": 700423092780272
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 239549402468307,
-							"parameters": {
-								"object-to-create": "EDeathParticle",
-								"layer": "0",
-								"x": "Enemy.X",
-								"y": "Enemy.Y",
-								"create-hierarchy": false
-							}
-						}
-					],
-					"sid": 809985859291401
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Boss1",
-							"sid": 666429221809256,
-							"parameters": {
-								"instance-variable": "Health",
-								"comparison": 3,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "Enemy destruction logic. Todo: add global score variable"
-						},
-						{
-							"id": "destroy",
-							"objectClass": "Boss1",
-							"sid": 669967916457139
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 712094034533087,
-							"parameters": {
-								"object-to-create": "EDeathParticle",
-								"layer": "0",
-								"x": "Boss1.X",
-								"y": "Boss1.Y",
-								"create-hierarchy": false
-							}
-						}
-					],
-					"sid": 520382698479328
-				}
-			],
-			"sid": 771796505356910
-		},
-		{
-			"eventType": "group",
-			"disabled": false,
-			"title": "Player Damage Code",
-			"description": "Code for the different ways the player takes damage",
-			"isActiveOnStart": true,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-collision-with-another-object",
-							"objectClass": "Player",
-							"sid": 761941640186525,
-							"parameters": {
-								"object": "Enemy"
-							}
-						},
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "Player",
-							"sid": 496569849933311,
-							"parameters": {
-								"instance-variable": "Invincible"
-							},
-							"isInverted": true
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "When the player takes damage, subtracts one health and makes them invincible for a second via the InvincibleTimer function..."
-						},
-						{
-							"id": "destroy",
-							"objectClass": "Enemy",
-							"sid": 460986140131518
-						},
-						{
-							"id": "subtract-from-instvar",
-							"objectClass": "Player",
-							"sid": 754743205188907,
-							"parameters": {
-								"instance-variable": "Health",
-								"value": "1"
-							}
-						},
-						{
-							"callFunction": "InvincibleTimer",
-							"sid": 631856139154268
-						}
-					],
-					"sid": 963008382419719
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-collision-with-another-object",
-							"objectClass": "Player",
-							"sid": 613655139962918,
-							"parameters": {
-								"object": "BossBullet"
-							}
-						},
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "Player",
-							"sid": 503023885460356,
-							"parameters": {
-								"instance-variable": "Invincible"
-							},
-							"isInverted": true
-						}
-					],
-					"actions": [
-						{
-							"id": "destroy",
-							"objectClass": "BossBullet",
-							"sid": 998879533260823
-						},
-						{
-							"id": "subtract-from-instvar",
-							"objectClass": "Player",
-							"sid": 662045942060042,
-							"parameters": {
-								"instance-variable": "Health",
-								"value": "1"
-							}
-						},
-						{
-							"callFunction": "InvincibleTimer",
-							"sid": 817429148625573
-						}
-					],
-					"sid": 212891639379400
-				},
-				{
-					"functionName": "InvincibleTimer",
-					"functionDescription": "Counts down to making the player un-invincible",
-					"functionCategory": "",
-					"functionReturnType": "none",
-					"functionIsAsync": false,
-					"functionParameters": [],
-					"eventType": "function-block",
-					"conditions": [],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "...which is located down here"
-						},
-						{
-							"id": "set-boolean-instvar",
-							"objectClass": "Player",
-							"sid": 879281571539843,
-							"parameters": {
-								"instance-variable": "Invincible",
-								"value": "true"
-							}
-						},
-						{
-							"id": "flash",
-							"objectClass": "Player",
-							"sid": 382524661021670,
-							"behaviorType": "Flash",
-							"parameters": {
-								"on-time": "0.1",
-								"off-time": "0.1",
-								"duration": "1.0"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 224363411991173,
-							"parameters": {
-								"seconds": "1"
-							}
-						},
-						{
-							"id": "set-boolean-instvar",
-							"objectClass": "Player",
-							"sid": 705822196120566,
-							"parameters": {
-								"instance-variable": "Invincible",
-								"value": "false"
-							}
-						}
-					],
-					"sid": 965268148619037
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Player",
-							"sid": 492472941892897,
-							"parameters": {
-								"instance-variable": "Health",
-								"comparison": 3,
-								"value": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"type": "comment",
-							"text": "when the guy dies, he dies"
-						},
-						{
-							"id": "destroy",
-							"objectClass": "Player",
-							"sid": 123264099540298
-						}
-					],
-					"sid": 863428019057168
-				}
-			],
-			"sid": 805310205349667
-		},
-		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -1328,6 +1344,81 @@
 				}
 			],
 			"sid": 143653464596438
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 462644399880874,
+					"parameters": {
+						"first-value": "ComputerPart.Count",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 387890665663196,
+					"parameters": {
+						"variable": "BossSpaned"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 638814593971331,
+					"parameters": {
+						"object-to-create": "Boss1",
+						"layer": "0",
+						"x": "LayoutWidth/2",
+						"y": "LayoutHeight/2",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "set-range",
+					"objectClass": "Boss1",
+					"sid": 853203627567666,
+					"behaviorType": "Turret",
+					"parameters": {
+						"range": "9999"
+					}
+				},
+				{
+					"id": "set-predictive-aim",
+					"objectClass": "Boss1",
+					"sid": 892222660501482,
+					"behaviorType": "Turret",
+					"parameters": {
+						"predictive-aim": "enabled"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Boss1",
+					"sid": 104161365010922,
+					"parameters": {
+						"instance-variable": "Health",
+						"value": "50"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 843287295252155,
+					"parameters": {
+						"variable": "BossSpaned",
+						"value": "true"
+					}
+				}
+			],
+			"sid": 896946680548463
 		}
 	],
 	"sid": 134333933306943

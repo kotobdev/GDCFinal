@@ -438,51 +438,6 @@
 						"zElevation": 0,
 						"blendMode": "additive"
 					}
-				},
-				{
-					"type": "Boss1",
-					"properties": {
-						"initially-visible": true,
-						"initial-animation": "Animation 1",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 18,
-					"instanceVariables": {
-						"Health": 50
-					},
-					"behaviors": {
-						"Turret": {
-							"properties": {
-								"range": 9999,
-								"rate-of-fire": 1,
-								"rotate": true,
-								"rotate-speed": 180,
-								"target-mode": "nearest",
-								"predictive-aim": true,
-								"projectile-speed": 400,
-								"use-collision-cells": true,
-								"enabled": true
-							}
-						}
-					},
-					"world": {
-						"x": 445,
-						"y": 186,
-						"width": 76.8,
-						"height": 76.16,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
 				}
 			],
 			"sid": 268002871119467,
