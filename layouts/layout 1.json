@@ -493,8 +493,8 @@
 						}
 					},
 					"world": {
-						"x": 513.5,
-						"y": 438,
+						"x": 250,
+						"y": -150,
 						"width": 47,
 						"height": 22,
 						"originX": 0.5,
@@ -510,7 +510,7 @@
 					}
 				},
 				{
-					"type": "Sprite2",
+					"type": "HealthBG",
 					"properties": {
 						"initially-visible": true,
 						"initial-animation": "Animation 1",
@@ -759,6 +759,17 @@
 				"parameters": {
 					"start-radius": 0.3,
 					"end-radius": 1.05
+				}
+			}
+		},
+		{
+			"effectId": "hsladjust",
+			"name": "AdjustHSL",
+			"instance": {
+				"parameters": {
+					"hue": 0,
+					"saturation": 1,
+					"luminosity": 1
 				}
 			}
 		}

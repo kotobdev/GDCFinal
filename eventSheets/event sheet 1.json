@@ -3,7 +3,27 @@
 	"events": [
 		{
 			"eventType": "variable",
-			"name": "BossSpaned",
+			"name": "BossDestroyed",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 494709439714131
+		},
+		{
+			"eventType": "variable",
+			"name": "isDoingTheThing",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "smh",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 384722093327644
+		},
+		{
+			"eventType": "variable",
+			"name": "BossSpawned",
 			"type": "boolean",
 			"initialValue": "false",
 			"comment": "",
@@ -381,6 +401,26 @@
 								"x": "Boss1.X",
 								"y": "Boss1.Y",
 								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 772035163337957,
+							"parameters": {
+								"audio-file": "esploodeywoodey",
+								"loop": "looping",
+								"volume": "-5",
+								"tag-optional": "\"\""
+							}
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 165797578797254,
+							"parameters": {
+								"variable": "BossDestroyed",
+								"value": "true"
 							}
 						}
 					],
@@ -836,6 +876,15 @@
 					"id": "every-tick",
 					"objectClass": "System",
 					"sid": 628450259557596
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 691892571241127,
+					"parameters": {
+						"variable": "isDoingTheThing"
+					},
+					"isInverted": true
 				}
 			],
 			"actions": [
@@ -1228,9 +1277,9 @@
 						{
 							"id": "repeat",
 							"objectClass": "System",
-							"sid": 696527027623427,
+							"sid": 511672330336380,
 							"parameters": {
-								"count": "10"
+								"count": "9"
 							}
 						}
 					],
@@ -1363,7 +1412,7 @@
 					"objectClass": "System",
 					"sid": 387890665663196,
 					"parameters": {
-						"variable": "BossSpaned"
+						"variable": "BossSpawned"
 					},
 					"isInverted": true
 				}
@@ -1413,12 +1462,187 @@
 					"objectClass": "System",
 					"sid": 843287295252155,
 					"parameters": {
-						"variable": "BossSpaned",
+						"variable": "BossSpawned",
 						"value": "true"
 					}
 				}
 			],
 			"sid": 896946680548463
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 236581247901215,
+					"parameters": {
+						"variable": "BossDestroyed"
+					}
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 592659326499680,
+					"parameters": {
+						"variable": "isDoingTheThing"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 376837014274158,
+					"parameters": {
+						"variable": "isDoingTheThing",
+						"value": "true"
+					}
+				},
+				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 271383562082984,
+					"parameters": {
+						"effect": "\"AdjustHSL\"",
+						"parameter-index": "2",
+						"value": "150"
+					}
+				},
+				{
+					"id": "set-time-scale",
+					"objectClass": "System",
+					"sid": 555411188560073,
+					"parameters": {
+						"time-scale": "0.5"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 648813774191336,
+					"parameters": {
+						"seconds": "1"
+					}
+				},
+				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 994156066773330,
+					"parameters": {
+						"effect": "\"AdjustHSL\"",
+						"parameter-index": "2",
+						"value": "160"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 280490113905719,
+					"parameters": {
+						"seconds": "1"
+					}
+				},
+				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 757759968941873,
+					"parameters": {
+						"effect": "\"AdjustHSL\"",
+						"parameter-index": "2",
+						"value": "170"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 940222142018075,
+					"parameters": {
+						"seconds": "1"
+					}
+				},
+				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 744749923625833,
+					"parameters": {
+						"effect": "\"AdjustHSL\"",
+						"parameter-index": "2",
+						"value": "180"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 893605904909321,
+					"parameters": {
+						"seconds": "1"
+					}
+				},
+				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 930311473296101,
+					"parameters": {
+						"effect": "\"AdjustHSL\"",
+						"parameter-index": "2",
+						"value": "190"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 431962863170326,
+					"parameters": {
+						"seconds": "1"
+					}
+				},
+				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 419188022507327,
+					"parameters": {
+						"effect": "\"AdjustHSL\"",
+						"parameter-index": "2",
+						"value": "200"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 317680840344668,
+					"parameters": {
+						"seconds": "1"
+					}
+				},
+				{
+					"id": "set-time-scale",
+					"objectClass": "System",
+					"sid": 478366861608333,
+					"parameters": {
+						"time-scale": "1"
+					}
+				},
+				{
+					"id": "stop-all",
+					"objectClass": "Audio",
+					"sid": 887609316828515
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 746954222055443,
+					"parameters": {
+						"layout": "MainMenu"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "i hate this code"
+				}
+			],
+			"sid": 843121081551503
 		}
 	],
 	"sid": 134333933306943

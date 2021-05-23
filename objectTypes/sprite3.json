@@ -1,0 +1,57 @@
+{
+	"name": "Sprite3",
+	"plugin-id": "Sprite",
+	"sid": 620894224056424,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 292,
+						"height": 112,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "E:\\Downloads\\New Piskel-1.png(7).png",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 7112532,
+						"collisionPoly": {
+							"points": [
+								0.003424657534246575,
+								0.008928571428571428,
+								0.5,
+								0.008928571428571428,
+								0.9931506849315068,
+								0.008928571428571428,
+								0.9931506849315068,
+								0.5,
+								0.9931506849315068,
+								0.9821428571428571,
+								0.5,
+								0.9821428571428571,
+								0.003424657534246575,
+								0.9821428571428571,
+								0.003424657534246575,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 929278184183227,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

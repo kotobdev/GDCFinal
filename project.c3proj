@@ -63,6 +63,14 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "Button",
+			"name": "Button",
+			"author": "Scirra",
+			"version": "r241",
+			"bundled": false
+		},
+		{
 			"type": "behavior",
 			"id": "EightDir",
 			"name": "8 Direction",
@@ -165,6 +173,14 @@
 			"author": "Brad Larson",
 			"version": "r241",
 			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "hsladjust",
+			"name": "Adjust HSL",
+			"author": "Scirra",
+			"version": "r241",
+			"bundled": false
 		}
 	],
 	"uniqueId": "cxofzq07d1h",
@@ -187,9 +203,16 @@
 			"Sprite",
 			"GunParticle",
 			"Text",
-			"Sprite2",
+			"HealthBG",
 			"Boss1",
-			"BossBullet"
+			"BossBullet",
+			"NameText",
+			"NameSubText",
+			"StartButton",
+			"Sprite3",
+			"Button2",
+			"InstructionText",
+			"Text2"
 		],
 		"subfolders": []
 	},
@@ -201,13 +224,15 @@
 	},
 	"layouts": {
 		"items": [
-			"Layout 1"
+			"Layout 1",
+			"MainMenu"
 		],
 		"subfolders": []
 	},
 	"eventSheets": {
 		"items": [
-			"Event sheet 1"
+			"Event sheet 1",
+			"Event sheet 2"
 		],
 		"subfolders": []
 	},
@@ -242,6 +267,11 @@
 					"name": "enemy hit 1 fix.webm",
 					"type": "audio/webm; codecs=opus",
 					"sid": 883617183210331
+				},
+				{
+					"name": "esploodeywoodey.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 789906779129131
 				}
 			],
 			"subfolders": []
@@ -385,7 +415,7 @@
 		"sampling": "nearest",
 		"downscaling": "medium",
 		"maxSpriteSheetSize": 2048,
-		"loaderStyle": "splash",
+		"loaderStyle": "progress-logo",
 		"preloadSounds": true,
 		"clearBackground": true,
 		"enhancedAccelerationPrecision": true,
@@ -393,5 +423,5 @@
 	},
 	"viewportWidth": 854,
 	"viewportHeight": 480,
-	"firstLayout": null
+	"firstLayout": "MainMenu"
 }

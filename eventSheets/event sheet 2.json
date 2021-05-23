@@ -1,0 +1,60 @@
+{
+	"name": "Event sheet 2",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 312073541252825
+				}
+			],
+			"actions": [
+				{
+					"id": "flash",
+					"objectClass": "NameSubText",
+					"sid": 698970938275624,
+					"behaviorType": "Flash",
+					"parameters": {
+						"on-time": "0.2",
+						"off-time": "0.2",
+						"duration": "99999"
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "StartButton",
+					"sid": 405630126783963,
+					"parameters": {
+						"property-name": "\"background-color\"",
+						"value": "\"blue\""
+					}
+				}
+			],
+			"sid": 377289565031942
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "StartButton",
+					"sid": 267984888036980
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 921921436477976,
+					"parameters": {
+						"layout": "Layout 1"
+					}
+				}
+			],
+			"sid": 519071415235394
+		}
+	],
+	"sid": 111556196072833
+}
