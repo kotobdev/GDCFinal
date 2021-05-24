@@ -1,0 +1,45 @@
+{
+	"name": "Event sheet 3",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 627595916117072
+				}
+			],
+			"actions": [
+				{
+					"id": "set-position",
+					"objectClass": "ToBeContinuedText",
+					"sid": 433183627367216,
+					"disabled": true,
+					"parameters": {
+						"x": "(ViewportLeft(\"Layer\") + ViewportRight(\"Layer\")) / 2",
+						"y": "(ViewportTop(\"Layer\") + ViewportBottom(\"Layer\")) / 2"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 724930297049056,
+					"parameters": {
+						"seconds": "5"
+					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 974920919820759,
+					"parameters": {
+						"layout": "MainMenu"
+					}
+				}
+			],
+			"sid": 920553572794063
+		}
+	],
+	"sid": 689992761846605
+}

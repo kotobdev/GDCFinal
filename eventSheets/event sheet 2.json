@@ -30,6 +30,33 @@
 						"property-name": "\"background-color\"",
 						"value": "\"blue\""
 					}
+				},
+				{
+					"id": "preload",
+					"objectClass": "Audio",
+					"sid": 342989447387209,
+					"parameters": {
+						"audio-file": "FinalGameLoopDrums"
+					}
+				},
+				{
+					"id": "preload",
+					"objectClass": "Audio",
+					"sid": 614197911011244,
+					"parameters": {
+						"audio-file": "FinalGameLoopMain"
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 287571780254231,
+					"parameters": {
+						"audio-file": "31254__deleted-user-229898__tvon",
+						"loop": "not-looping",
+						"volume": "0",
+						"tag-optional": "\"\""
+					}
 				}
 			],
 			"sid": 377289565031942
