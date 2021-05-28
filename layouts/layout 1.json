@@ -80,8 +80,8 @@
 					"instanceVariables": {
 						"RandNum": 0,
 						"Speed": 200,
-						"Health": 10,
-						"MaxHealth": 10,
+						"Health": 3,
+						"MaxHealth": 3,
 						"FireSpeed": 0.2,
 						"SpawnRate": 10,
 						"Invincible": false,
@@ -379,10 +379,10 @@
 					"world": {
 						"x": 386.487922705314,
 						"y": 368.4878048780488,
-						"width": 88,
-						"height": 81,
-						"originX": 0.5169082125603864,
-						"originY": 0.5121951219512195,
+						"width": 63.76811594202898,
+						"height": 50.57560975609756,
+						"originX": 0.4120575766538499,
+						"originY": 0.7552264808362369,
 						"color": [
 							1,
 							1,

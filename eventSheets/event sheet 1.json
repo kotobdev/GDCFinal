@@ -23,6 +23,26 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "playerIsDead",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 158624024609186
+		},
+		{
+			"eventType": "variable",
+			"name": "luminosity",
+			"type": "number",
+			"initialValue": "100",
+			"comment": "For death transition",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 772530403161409
+		},
+		{
+			"eventType": "variable",
 			"name": "BossSpawned",
 			"type": "boolean",
 			"initialValue": "false",
@@ -40,15 +60,33 @@
 			"children": [
 				{
 					"eventType": "comment",
-					"text": "Improved spawning mechanics- such as limits to amount of enemies on screen"
+					"text": "Improved spawning mechanics- such as limits to amount of enemies on screen",
+					"background-color": [
+						0,
+						1,
+						0,
+						1
+					]
 				},
 				{
 					"eventType": "comment",
-					"text": "Balancing, especially with fire rate"
+					"text": "Balancing, especially with fire rate",
+					"background-color": [
+						0,
+						0.996078431372549,
+						0,
+						1
+					]
 				},
 				{
 					"eventType": "comment",
-					"text": "Possible wave-based spawning system, to make use of dynamic music"
+					"text": "Possible wave-based spawning system, to make use of dynamic music",
+					"background-color": [
+						0,
+						1,
+						0,
+						1
+					]
 				},
 				{
 					"eventType": "comment",
@@ -56,7 +94,13 @@
 				},
 				{
 					"eventType": "comment",
-					"text": "Import new graphics (when finished)"
+					"text": "Import new graphics (when finished)",
+					"background-color": [
+						0,
+						1,
+						0,
+						1
+					]
 				}
 			],
 			"sid": 936926890678937
@@ -242,11 +286,11 @@
 						{
 							"id": "play",
 							"objectClass": "Audio",
-							"sid": 355621851417721,
+							"sid": 829784470647748,
 							"parameters": {
 								"audio-file": "enemy hit 1 fix",
 								"loop": "not-looping",
-								"volume": "0",
+								"volume": "-3",
 								"tag-optional": "\"\""
 							}
 						}
@@ -317,11 +361,11 @@
 						{
 							"id": "play",
 							"objectClass": "Audio",
-							"sid": 930525496856602,
+							"sid": 784113338807153,
 							"parameters": {
 								"audio-file": "enemy hit 1 fix",
 								"loop": "not-looping",
-								"volume": "0",
+								"volume": "-3",
 								"tag-optional": "\"\""
 							}
 						}
@@ -483,6 +527,17 @@
 						{
 							"callFunction": "InvincibleTimer",
 							"sid": 959087270620795
+						},
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 372638080597739,
+							"parameters": {
+								"audio-file": "playerdamagefix",
+								"loop": "not-looping",
+								"volume": "-3",
+								"tag-optional": "\"\""
+							}
 						}
 					],
 					"sid": 518503976560850
@@ -526,6 +581,17 @@
 						{
 							"callFunction": "InvincibleTimer",
 							"sid": 840319553733057
+						},
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 122343958274160,
+							"parameters": {
+								"audio-file": "playerdamagefix",
+								"loop": "not-looping",
+								"volume": "-3",
+								"tag-optional": "\"\""
+							}
 						}
 					],
 					"sid": 717871951963497
@@ -607,9 +673,161 @@
 							"id": "destroy",
 							"objectClass": "Player",
 							"sid": 581805828745797
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "Player",
+							"sid": 195756484771222,
+							"disabled": true,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-max-speed",
+							"objectClass": "Player",
+							"sid": 179781899149362,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"max-speed": "0"
+							}
+						},
+						{
+							"id": "set-volume",
+							"objectClass": "Audio",
+							"sid": 921846929688427,
+							"parameters": {
+								"tag": "\"drumloop\"",
+								"db": "-999"
+							}
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 914548941925296,
+							"parameters": {
+								"variable": "playerIsDead",
+								"value": "true"
+							}
 						}
 					],
 					"sid": 320781961756085
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-tick",
+							"objectClass": "System",
+							"sid": 829206871635277
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 117776200723534,
+							"parameters": {
+								"variable": "playerIsDead"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "subtract-from-eventvar",
+							"objectClass": "System",
+							"sid": 384389272494748,
+							"parameters": {
+								"variable": "luminosity",
+								"value": "0.25"
+							}
+						},
+						{
+							"id": "set-layout-effect-parameter",
+							"objectClass": "System",
+							"sid": 661515934675756,
+							"parameters": {
+								"effect": "\"AdjustHSL\"",
+								"parameter-index": "2",
+								"value": "luminosity"
+							}
+						}
+					],
+					"sid": 553709196284504
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 790074762176072,
+							"parameters": {
+								"variable": "luminosity",
+								"comparison": 3,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-time-scale",
+							"objectClass": "System",
+							"sid": 103792416656097,
+							"parameters": {
+								"time-scale": "1"
+							}
+						},
+						{
+							"id": "set-layout-effect-parameter",
+							"objectClass": "System",
+							"sid": 446339007735838,
+							"parameters": {
+								"effect": "\"AdjustHSL\"",
+								"parameter-index": "2",
+								"value": "100"
+							}
+						},
+						{
+							"id": "stop-all",
+							"objectClass": "Audio",
+							"sid": 733085573639909
+						},
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 252793213656380,
+							"parameters": {
+								"layout": "MainMenu"
+							}
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 228421481271722,
+							"parameters": {
+								"variable": "isDoingTheThing",
+								"value": "false"
+							}
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 651572364872349,
+							"parameters": {
+								"variable": "BossDestroyed",
+								"value": "false"
+							}
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 726777143199811,
+							"parameters": {
+								"variable": "BossSpawned",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 770934572842061
 				}
 			],
 			"sid": 543136358691209
@@ -815,64 +1033,6 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-click",
-					"objectClass": "Mouse",
-					"sid": 806497921883294,
-					"parameters": {
-						"mouse-button": "left",
-						"click-type": "clicked"
-					}
-				}
-			],
-			"actions": [
-				{
-					"type": "comment",
-					"text": "The old shooting script, new one is much better."
-				},
-				{
-					"id": "create-object",
-					"objectClass": "System",
-					"sid": 807613345097039,
-					"parameters": {
-						"object-to-create": "PlayerBullet",
-						"layer": "0",
-						"x": "0",
-						"y": "0",
-						"create-hierarchy": false
-					}
-				},
-				{
-					"id": "set-x",
-					"objectClass": "PlayerBullet",
-					"sid": 406082400244226,
-					"parameters": {
-						"x": "Player.X"
-					}
-				},
-				{
-					"id": "set-y",
-					"objectClass": "PlayerBullet",
-					"sid": 762242758529893,
-					"parameters": {
-						"y": "Player.Y"
-					}
-				},
-				{
-					"id": "set-angle",
-					"objectClass": "PlayerBullet",
-					"sid": 122062801086727,
-					"parameters": {
-						"angle": "Player.Angle"
-					}
-				}
-			],
-			"sid": 675069918162290,
-			"disabled": true
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
 					"id": "every-tick",
 					"objectClass": "System",
 					"sid": 628450259557596
@@ -982,6 +1142,15 @@
 					"parameters": {
 						"mouse-button": "left"
 					}
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 193443673460816,
+					"parameters": {
+						"variable": "playerIsDead"
+					},
+					"isInverted": true
 				}
 			],
 			"actions": [
@@ -1044,6 +1213,7 @@
 					"id": "set-volume",
 					"objectClass": "Audio",
 					"sid": 788514475652138,
+					"disabled": true,
 					"parameters": {
 						"tag": "\"drumloop\"",
 						"db": "-5"
@@ -1152,10 +1322,10 @@
 						{
 							"id": "add-to-instvar",
 							"objectClass": "Player",
-							"sid": 460297382053438,
+							"sid": 656501685695379,
 							"parameters": {
 								"instance-variable": "MaxHealth",
-								"value": "5"
+								"value": "1"
 							}
 						},
 						{
@@ -1266,6 +1436,23 @@
 						"loop": "looping",
 						"volume": "-100",
 						"tag-optional": "\"drumloop\""
+					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Player",
+					"sid": 638901927733379,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"max-speed": "200"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "Player",
+					"sid": 145211225562651,
+					"parameters": {
+						"visibility": "visible"
 					}
 				}
 			],

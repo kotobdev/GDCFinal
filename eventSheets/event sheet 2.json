@@ -74,10 +74,20 @@
 				{
 					"id": "go-to-layout",
 					"objectClass": "System",
-					"sid": 921921436477976,
+					"sid": 705539246449547,
 					"parameters": {
 						"layout": "Layout 1"
 					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 549607916778041
+				},
+				{
+					"id": "reset-global-variables",
+					"objectClass": "System",
+					"sid": 713369525877661
 				}
 			],
 			"sid": 519071415235394
