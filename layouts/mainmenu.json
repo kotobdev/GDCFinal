@@ -96,7 +96,7 @@
 							0,
 							1
 						],
-						"horizontal-alignment": "left",
+						"horizontal-alignment": "center",
 						"vertical-alignment": "top",
 						"wrapping": "word",
 						"initially-visible": true,
@@ -110,9 +110,9 @@
 						}
 					},
 					"world": {
-						"x": 451,
-						"y": 166,
-						"width": 200,
+						"x": 333,
+						"y": 214,
+						"width": 402.22289498998555,
 						"height": 30,
 						"originX": 0,
 						"originY": 0,
@@ -159,7 +159,7 @@
 				{
 					"type": "InstructionText",
 					"properties": {
-						"text": "[B]INSTRUCTIONS[/B]\nWASD to move\nMOUSE to aim + LMB to fire\nCollect 10 computer parts scattered across the map, then defeat the boss!\nEach computer part gives you a random upgrade!",
+						"text": "[B]INSTRUCTIONS[/B]\nWASD to move\nMOUSE to aim + Hold LMB to fire\nCollect 10 computer parts scattered across the map, then defeat the boss!\nEach computer part gives you a random upgrade!",
 						"enable-bbcode": true,
 						"font": "Arial",
 						"size": 12,
@@ -272,6 +272,35 @@
 						"height": 30,
 						"originX": 0,
 						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Sprite2",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 25,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 635,
+						"y": 225,
+						"width": 107,
+						"height": 93,
+						"originX": 0.5,
+						"originY": 0.5,
 						"color": [
 							1,
 							1,

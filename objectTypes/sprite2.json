@@ -1,16 +1,10 @@
 {
 	"name": "Sprite2",
 	"plugin-id": "Sprite",
-	"sid": 361666141328201,
+	"sid": 216680157391850,
 	"isGlobal": false,
 	"instanceVariables": [],
-	"behaviorTypes": [
-		{
-			"behaviorId": "Anchor",
-			"name": "Anchor",
-			"sid": 560579116815175
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
 		"items": [
@@ -24,12 +18,12 @@
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 4549710,
+						"imageSpriteId": 2432022,
 						"useCollisionPoly": true,
 						"duration": 1
 					}
 				],
-				"sid": 635486232305986,
+				"sid": 134959260129729,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

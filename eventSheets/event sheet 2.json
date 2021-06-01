@@ -2,6 +2,16 @@
 	"name": "Event sheet 2",
 	"events": [
 		{
+			"eventType": "variable",
+			"name": "RandNumStart",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Random number for the funny yellow start text",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 195950317412494
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -57,9 +67,202 @@
 						"volume": "0",
 						"tag-optional": "\"\""
 					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 237038671185281,
+					"parameters": {
+						"variable": "RandNumStart",
+						"value": "(round(random(1,7)))"
+					}
 				}
 			],
-			"sid": 377289565031942
+			"sid": 377289565031942,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 620238777480694,
+							"parameters": {
+								"variable": "RandNumStart",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "NameSubText",
+							"sid": 678332394551683,
+							"parameters": {
+								"text": "\"It's super cool!\""
+							}
+						}
+					],
+					"sid": 516992907387210
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 779974339948440,
+							"parameters": {
+								"variable": "RandNumStart",
+								"comparison": 0,
+								"value": "2"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "NameSubText",
+							"sid": 241906097212732,
+							"parameters": {
+								"text": "\"Check out the GitHub!\""
+							}
+						}
+					],
+					"sid": 242581888189929
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 417543018151880,
+							"parameters": {
+								"variable": "RandNumStart",
+								"comparison": 0,
+								"value": "3"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "NameSubText",
+							"sid": 101877676040816,
+							"parameters": {
+								"text": "\"Read the Instructions!\""
+							}
+						}
+					],
+					"sid": 799460130357507
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 119097354451548,
+							"parameters": {
+								"variable": "RandNumStart",
+								"comparison": 0,
+								"value": "4"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "NameSubText",
+							"sid": 952420570489680,
+							"parameters": {
+								"text": "\"The Best Final Ever!\""
+							}
+						}
+					],
+					"sid": 884145038123129
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 478891905003193,
+							"parameters": {
+								"variable": "RandNumStart",
+								"comparison": 0,
+								"value": "5"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "NameSubText",
+							"sid": 286743682190184,
+							"parameters": {
+								"text": "\"Animated Cutscenes Coming Soon:tm:\""
+							}
+						}
+					],
+					"sid": 449267902112790
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 697375930330666,
+							"parameters": {
+								"variable": "RandNumStart",
+								"comparison": 0,
+								"value": "6"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "NameSubText",
+							"sid": 625060242012398,
+							"parameters": {
+								"text": "\"Please Give Us an A!\""
+							}
+						}
+					],
+					"sid": 978988559323053
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 690377306992392,
+							"parameters": {
+								"variable": "RandNumStart",
+								"comparison": 0,
+								"value": "7"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "NameSubText",
+							"sid": 755038865283556,
+							"parameters": {
+								"text": "\"Now with Cool Music!\""
+							}
+						}
+					],
+					"sid": 150892061053149
+				}
+			]
 		},
 		{
 			"eventType": "block",

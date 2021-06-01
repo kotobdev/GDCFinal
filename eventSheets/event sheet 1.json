@@ -1242,10 +1242,10 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "Player",
-					"sid": 104838306747889,
+					"sid": 816488248624931,
 					"parameters": {
 						"instance-variable": "RandNum",
-						"value": "(round(random(1,3)))"
+						"value": "(round(random(1,4)))"
 					}
 				},
 				{
@@ -1399,6 +1399,45 @@
 						}
 					],
 					"sid": 332799911373295
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Player",
+							"sid": 219980994649517,
+							"parameters": {
+								"instance-variable": "RandNum",
+								"comparison": 0,
+								"value": "4"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "PowerUpText",
+							"sid": 450943832147831,
+							"parameters": {
+								"text": "\"Increased Damage!\""
+							}
+						},
+						{
+							"callFunction": "TextReset",
+							"sid": 564106272102909
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 371293440459729,
+							"parameters": {
+								"instance-variable": "Damage",
+								"value": "(Player.Damage*1.25)"
+							}
+						}
+					],
+					"sid": 519764900175840
 				}
 			]
 		},
@@ -1770,24 +1809,6 @@
 							"id": "wait",
 							"objectClass": "System",
 							"sid": 144811545117983,
-							"parameters": {
-								"seconds": "1"
-							}
-						},
-						{
-							"id": "set-layout-effect-parameter",
-							"objectClass": "System",
-							"sid": 666491204212998,
-							"parameters": {
-								"effect": "\"AdjustHSL\"",
-								"parameter-index": "2",
-								"value": "190"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 663580806024386,
 							"parameters": {
 								"seconds": "1"
 							}
