@@ -225,7 +225,8 @@
 			"Browser",
 			"Text3",
 			"ToBeContinuedText",
-			"Sprite2"
+			"Sprite2",
+			"Text4"
 		],
 		"subfolders": []
 	},
