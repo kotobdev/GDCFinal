@@ -201,20 +201,20 @@
 				{
 					"type": "Text2",
 					"properties": {
-						"text": "[b]TODO:[/b]\n-Final Level\n-Final Level Music",
+						"text": "[b]READ:[/b]\nRespawning DOES NOT WORK right now!\n(Global objects suck)\nReload the page to play again!\n",
 						"enable-bbcode": true,
 						"font": "Arial",
-						"size": 12,
+						"size": 10,
 						"line-height": 0,
 						"bold": false,
 						"italic": false,
 						"color": [
-							0,
+							1,
 							0,
 							0,
 							1
 						],
-						"horizontal-alignment": "left",
+						"horizontal-alignment": "center",
 						"vertical-alignment": "top",
 						"wrapping": "word",
 						"initially-visible": true,
@@ -224,10 +224,10 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 37,
-						"y": 281,
+						"x": 327,
+						"y": 186,
 						"width": 200,
-						"height": 161,
+						"height": 96,
 						"originX": 0,
 						"originY": 0,
 						"color": [
@@ -314,7 +314,7 @@
 				{
 					"type": "Text4",
 					"properties": {
-						"text": "[b]CHANGELOG[/b]\n-Some new sprites\n-Menu improvements\n-New Upgrade",
+						"text": "[b]CHANGELOG[/b]\n-Some new sprites\n-Menu improvements\n-New Upgrade\n-Final Level\n-Final Level Music",
 						"enable-bbcode": true,
 						"font": "Arial",
 						"size": 12,
@@ -337,10 +337,10 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 37,
-						"y": 195,
+						"x": 27,
+						"y": 217,
 						"width": 200,
-						"height": 82,
+						"height": 123,
 						"originX": 0,
 						"originY": 0,
 						"color": [

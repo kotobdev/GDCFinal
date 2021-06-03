@@ -41,7 +41,7 @@
 				{
 					"type": "ToBeContinuedText",
 					"properties": {
-						"text": "[b]TO BE CONTINUED[/b]\n[size=14](no really i'm working on some stuff I swear)[/size]",
+						"text": "[b]YOU WON![/b]",
 						"enable-bbcode": true,
 						"font": "Arial",
 						"size": 48,
@@ -64,8 +64,8 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 142,
-						"y": 130,
+						"x": 141,
+						"y": 171,
 						"width": 576,
 						"height": 231,
 						"originX": 0,

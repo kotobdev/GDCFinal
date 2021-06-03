@@ -667,11 +667,10 @@
 						{
 							"id": "play",
 							"objectClass": "Audio",
-							"sid": 772035163337957,
-							"disabled": true,
+							"sid": 216817989920352,
 							"parameters": {
 								"audio-file": "esploodeywoodey",
-								"loop": "looping",
+								"loop": "not-looping",
 								"volume": "-5",
 								"tag-optional": "\"\""
 							}
@@ -1273,16 +1272,6 @@
 						"variable": "isDoingTheThing"
 					},
 					"isInverted": true
-				},
-				{
-					"id": "compare-two-values",
-					"objectClass": "System",
-					"sid": 466986445058084,
-					"parameters": {
-						"first-value": "LayoutName",
-						"comparison": 0,
-						"second-value": "\"Layout 1\""
-					}
 				}
 			],
 			"actions": [

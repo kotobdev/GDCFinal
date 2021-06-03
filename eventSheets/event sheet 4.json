@@ -22,6 +22,26 @@
 			"sid": 873660246600954
 		},
 		{
+			"eventType": "variable",
+			"name": "Finish",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "okay well damn it i messed up the names, oh well",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 368399825983319
+		},
+		{
+			"eventType": "variable",
+			"name": "ThirdBossGunsDestroyed",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "guess I'll keep doing this",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 652973800405689
+		},
+		{
 			"eventType": "include",
 			"includeSheet": "Event sheet 1"
 		},
@@ -151,44 +171,7 @@
 							}
 						}
 					],
-					"actions": [
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 107126042586522,
-							"parameters": {
-								"object-to-create": "bossgun",
-								"layer": "0",
-								"x": "426",
-								"y": "92",
-								"create-hierarchy": false
-							}
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 509393303551668,
-							"parameters": {
-								"object-to-create": "bossgun",
-								"layer": "0",
-								"x": "288",
-								"y": "92",
-								"create-hierarchy": false
-							}
-						},
-						{
-							"id": "create-object",
-							"objectClass": "System",
-							"sid": 959892381394962,
-							"parameters": {
-								"object-to-create": "bossgun",
-								"layer": "0",
-								"x": "552",
-								"y": "92",
-								"create-hierarchy": false
-							}
-						}
-					],
+					"actions": [],
 					"sid": 284003956858008
 				},
 				{
@@ -304,12 +287,12 @@
 				{
 					"id": "play",
 					"objectClass": "Audio",
-					"sid": 819390754293684,
+					"sid": 180502781678964,
 					"parameters": {
 						"audio-file": "gamebossmusicloop",
 						"loop": "looping",
 						"volume": "0",
-						"tag-optional": "\"\""
+						"tag-optional": "\"bossmusic\""
 					}
 				},
 				{
@@ -447,6 +430,86 @@
 				{
 					"id": "compare-two-values",
 					"objectClass": "System",
+					"sid": 547142935781933,
+					"parameters": {
+						"first-value": "bossgun.Count",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 851358662495446,
+					"parameters": {
+						"variable": "SecondBossGunsDestroyed"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 606276387822264,
+					"parameters": {
+						"variable": "ThirdBossGunsDestroyed",
+						"value": "true"
+					}
+				}
+			],
+			"sid": 940386985083944
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 569968224710276,
+					"parameters": {
+						"first-value": "bossgun.Count",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 969110266783795,
+					"parameters": {
+						"first-value": "enemy.Count",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 166446439688130,
+					"parameters": {
+						"variable": "ThirdBossGunsDestroyed"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 950136673840872,
+					"parameters": {
+						"variable": "Finish",
+						"value": "true"
+					}
+				}
+			],
+			"sid": 231841370657610
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
 					"sid": 361286491720612,
 					"parameters": {
 						"first-value": "bossgun.Count",
@@ -461,6 +524,15 @@
 					"parameters": {
 						"variable": "FirstBossGunDestroyed"
 					}
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 287780730411312,
+					"parameters": {
+						"variable": "ThirdBossGunsDestroyed"
+					},
+					"isInverted": true
 				}
 			],
 			"actions": [
@@ -472,9 +544,467 @@
 						"variable": "SecondBossGunsDestroyed",
 						"value": "true"
 					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 107126042586522,
+					"parameters": {
+						"object-to-create": "bossgun",
+						"layer": "0",
+						"x": "426",
+						"y": "92",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 509393303551668,
+					"parameters": {
+						"object-to-create": "bossgun",
+						"layer": "0",
+						"x": "288",
+						"y": "92",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 959892381394962,
+					"parameters": {
+						"object-to-create": "bossgun",
+						"layer": "0",
+						"x": "552",
+						"y": "92",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 978982266787919,
+					"parameters": {
+						"object-to-create": "Enemy",
+						"layer": "0",
+						"x": "50",
+						"y": "260",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 927366459140258,
+					"parameters": {
+						"object-to-create": "Enemy",
+						"layer": "0",
+						"x": "50",
+						"y": "270",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 588925510699056,
+					"parameters": {
+						"object-to-create": "Enemy",
+						"layer": "0",
+						"x": "50",
+						"y": "280",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 953889229403637,
+					"parameters": {
+						"object-to-create": "Enemy",
+						"layer": "0",
+						"x": "50",
+						"y": "250",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 436428371578879,
+					"parameters": {
+						"object-to-create": "Enemy",
+						"layer": "0",
+						"x": "50",
+						"y": "240",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 559057536368847,
+					"parameters": {
+						"object-to-create": "Enemy",
+						"layer": "0",
+						"x": "770",
+						"y": "260",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 824500102652025,
+					"parameters": {
+						"object-to-create": "Enemy",
+						"layer": "0",
+						"x": "770",
+						"y": "270",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 884116106622020,
+					"parameters": {
+						"object-to-create": "Enemy",
+						"layer": "0",
+						"x": "770",
+						"y": "280",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 126118554130327,
+					"parameters": {
+						"object-to-create": "Enemy",
+						"layer": "0",
+						"x": "770",
+						"y": "250",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 195713415885417,
+					"parameters": {
+						"object-to-create": "Enemy",
+						"layer": "0",
+						"x": "770",
+						"y": "240",
+						"create-hierarchy": false
+					}
 				}
 			],
 			"sid": 509723079423127
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 154507948932300,
+					"parameters": {
+						"variable": "Finish"
+					}
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 421978502176849,
+					"parameters": {
+						"variable": "isDoingTheThing"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 461864838692446,
+					"parameters": {
+						"variable": "isDoingTheThing",
+						"value": "true"
+					}
+				},
+				{
+					"id": "add-filter-effect",
+					"objectClass": "Audio",
+					"sid": 928887317287381,
+					"parameters": {
+						"tag": "\"bossmusic\"",
+						"type": "low-pass",
+						"frequency": "21",
+						"detune": "12",
+						"q": "10",
+						"gain": "250",
+						"mix": "100"
+					}
+				},
+				{
+					"id": "add-distortion-effect",
+					"objectClass": "Audio",
+					"sid": 214658701004781,
+					"parameters": {
+						"tag": "\"bossmusic\"",
+						"threshold": "-27",
+						"headroom": "21",
+						"drive": "5",
+						"make-up-gain": "3",
+						"mix": "100"
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 450131073621515,
+					"parameters": {
+						"audio-file": "esploodeywoodey",
+						"loop": "looping",
+						"volume": "-5",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 978413613625502,
+					"parameters": {
+						"effect": "\"AdjustHSL\"",
+						"parameter-index": "2",
+						"value": "150"
+					}
+				},
+				{
+					"id": "set-time-scale",
+					"objectClass": "System",
+					"sid": 945996494071957,
+					"parameters": {
+						"time-scale": "0.5"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 112569292855428,
+					"parameters": {
+						"seconds": "1"
+					}
+				},
+				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 436655551781519,
+					"parameters": {
+						"effect": "\"AdjustHSL\"",
+						"parameter-index": "2",
+						"value": "160"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 670260923259380,
+					"parameters": {
+						"seconds": "1"
+					}
+				},
+				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 788950781427747,
+					"parameters": {
+						"effect": "\"AdjustHSL\"",
+						"parameter-index": "2",
+						"value": "170"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 275147407753237,
+					"parameters": {
+						"seconds": "1"
+					}
+				},
+				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 838278184887971,
+					"parameters": {
+						"effect": "\"AdjustHSL\"",
+						"parameter-index": "2",
+						"value": "180"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 924201987662927,
+					"parameters": {
+						"seconds": "1"
+					}
+				},
+				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 171091323879610,
+					"parameters": {
+						"effect": "\"AdjustHSL\"",
+						"parameter-index": "2",
+						"value": "190"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 994281358406048,
+					"parameters": {
+						"seconds": "1"
+					}
+				},
+				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 318666552217352,
+					"parameters": {
+						"effect": "\"AdjustHSL\"",
+						"parameter-index": "2",
+						"value": "200"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 924300705586013,
+					"parameters": {
+						"seconds": "1"
+					}
+				},
+				{
+					"id": "set-time-scale",
+					"objectClass": "System",
+					"sid": 146637853480795,
+					"parameters": {
+						"time-scale": "1"
+					}
+				},
+				{
+					"id": "set-layout-effect-parameter",
+					"objectClass": "System",
+					"sid": 550355947801778,
+					"parameters": {
+						"effect": "\"AdjustHSL\"",
+						"parameter-index": "2",
+						"value": "100"
+					}
+				},
+				{
+					"id": "stop-all",
+					"objectClass": "Audio",
+					"sid": 518149605109213
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Player",
+					"sid": 142029564350842
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 961262134347414,
+					"parameters": {
+						"layout": "ToBeContinued"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 435416107889849,
+					"parameters": {
+						"variable": "isDoingTheThing",
+						"value": "false"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 768172934565114,
+					"parameters": {
+						"variable": "BossDestroyed",
+						"value": "false"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 518640875647493,
+					"parameters": {
+						"variable": "BossSpawned",
+						"value": "false"
+					}
+				},
+				{
+					"type": "comment",
+					"text": "i hate this code"
+				}
+			],
+			"sid": 616860922991691
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 732938664409580,
+					"parameters": {
+						"variable": "Finish"
+					}
+				},
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 451113450335885,
+					"parameters": {
+						"interval-seconds": "0.2"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 783696555837018,
+					"parameters": {
+						"object-to-create": "EDeathParticle",
+						"layer": "1",
+						"x": "random(1, 854)",
+						"y": "random(1, 480)",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 482124346987318,
+					"parameters": {
+						"audio-file": "esploodeywoodey",
+						"loop": "not-looping",
+						"volume": "-15",
+						"tag-optional": "\"\""
+					}
+				}
+			],
+			"sid": 332389784425495
 		}
 	],
 	"sid": 718659902411894
