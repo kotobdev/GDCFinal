@@ -2,8 +2,261 @@
 	"name": "Event sheet 4",
 	"events": [
 		{
+			"eventType": "variable",
+			"name": "FirstBossGunDestroyed",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "okay this method actually sucks, but pick instance isn't working and this is due tomorrow",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 585963071451755
+		},
+		{
+			"eventType": "variable",
+			"name": "SecondBossGunsDestroyed",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "guess I'll keep doing this",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 873660246600954
+		},
+		{
 			"eventType": "include",
 			"includeSheet": "Event sheet 1"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "PlayerBullet",
+					"sid": 275488702281051,
+					"parameters": {
+						"object": "bossgun"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Bullet logic for collisions."
+				},
+				{
+					"id": "subtract-from-instvar",
+					"objectClass": "bossgun",
+					"sid": 209860223789902,
+					"parameters": {
+						"instance-variable": "health",
+						"value": "Player.Damage"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 363583247876202,
+					"parameters": {
+						"object-to-create": "HitParticle",
+						"layer": "0",
+						"x": "PlayerBullet.X",
+						"y": "PlayerBullet.Y",
+						"create-hierarchy": false
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "PlayerBullet",
+					"sid": 157677331698116
+				},
+				{
+					"id": "set-angle-toward-position",
+					"objectClass": "HitParticle",
+					"sid": 713246390515174,
+					"parameters": {
+						"x": "Enemy.X",
+						"y": "Enemy.Y"
+					}
+				},
+				{
+					"id": "set-default-color",
+					"objectClass": "Boss1",
+					"sid": 633145157811583,
+					"disabled": true,
+					"parameters": {
+						"color": "rgbEx((Enemy.Health * 2), 0, 0)"
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 149217593565603,
+					"parameters": {
+						"audio-file": "enemy hit 1 fix",
+						"loop": "not-looping",
+						"volume": "0",
+						"tag-optional": "\"\""
+					}
+				}
+			],
+			"sid": 809658821360429
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "bossgun",
+					"sid": 514187241239142,
+					"parameters": {
+						"instance-variable": "health",
+						"comparison": 3,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "comment",
+					"text": "Enemy destruction logic. Todo: add global score variable"
+				},
+				{
+					"id": "destroy",
+					"objectClass": "bossgun",
+					"sid": 295572839814165
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 817268508786244,
+					"parameters": {
+						"object-to-create": "EDeathParticle",
+						"layer": "0",
+						"x": "bossgun.X",
+						"y": "bossgun.Y",
+						"create-hierarchy": false
+					}
+				}
+			],
+			"sid": 699037104669773,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 138238337220882,
+							"parameters": {
+								"variable": "SecondBossGunsDestroyed"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 107126042586522,
+							"parameters": {
+								"object-to-create": "bossgun",
+								"layer": "0",
+								"x": "426",
+								"y": "92",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 509393303551668,
+							"parameters": {
+								"object-to-create": "bossgun",
+								"layer": "0",
+								"x": "288",
+								"y": "92",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 959892381394962,
+							"parameters": {
+								"object-to-create": "bossgun",
+								"layer": "0",
+								"x": "552",
+								"y": "92",
+								"create-hierarchy": false
+							}
+						}
+					],
+					"sid": 284003956858008
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 983368725270491,
+							"parameters": {
+								"variable": "FirstBossGunDestroyed"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 213016305411691,
+							"parameters": {
+								"variable": "FirstBossGunDestroyed",
+								"value": "true"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 265470506152778,
+							"parameters": {
+								"object-to-create": "bossgun",
+								"layer": "0",
+								"x": "288",
+								"y": "92",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 281692188477500,
+							"parameters": {
+								"object-to-create": "bossgun",
+								"layer": "0",
+								"x": "552",
+								"y": "92",
+								"create-hierarchy": false
+							}
+						}
+					],
+					"sid": 184598074373656
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 360115604893257,
+							"parameters": {
+								"variable": "FirstBossGunDestroyed"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 658605405286514
+				}
+			]
 		},
 		{
 			"eventType": "block",
@@ -67,9 +320,161 @@
 						"width": "Player.Width/2",
 						"height": "Player.Height/2"
 					}
+				},
+				{
+					"id": "set-max-speed",
+					"objectClass": "Player",
+					"sid": 349927057083212,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"max-speed": "Player.Speed/2"
+					}
 				}
 			],
 			"sid": 710569934519135
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 813792649213885
+				}
+			],
+			"actions": [
+				{
+					"id": "acquire-target",
+					"objectClass": "bossgun",
+					"sid": 667604118797806,
+					"behaviorType": "Turret",
+					"parameters": {
+						"target": "Player"
+					}
+				}
+			],
+			"sid": 459754543312808,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-shoot",
+							"objectClass": "bossgun",
+							"sid": 988581209781432,
+							"behaviorType": "Turret"
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "bossgun",
+							"sid": 584628217647172,
+							"parameters": {
+								"instance-variable": "isFiring"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 708996112765242,
+							"parameters": {
+								"object-to-create": "BossBullet",
+								"layer": "0",
+								"x": "bossgun.X",
+								"y": "bossgun.Y",
+								"create-hierarchy": false
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "BossBullet",
+							"sid": 691514913741467,
+							"parameters": {
+								"angle": "bossgun.Angle"
+							}
+						}
+					],
+					"sid": 209592012790568
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 159115560252362,
+					"parameters": {
+						"interval-seconds": "3"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-instvar",
+					"objectClass": "bossgun",
+					"sid": 679101996035468,
+					"parameters": {
+						"instance-variable": "isFiring",
+						"value": "true"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 751085341151247,
+					"parameters": {
+						"seconds": "1.0"
+					}
+				},
+				{
+					"id": "set-boolean-instvar",
+					"objectClass": "bossgun",
+					"sid": 512455463942250,
+					"parameters": {
+						"instance-variable": "isFiring",
+						"value": "false"
+					}
+				}
+			],
+			"sid": 348479866127701
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 361286491720612,
+					"parameters": {
+						"first-value": "bossgun.Count",
+						"comparison": 0,
+						"second-value": "0"
+					}
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 717912287354023,
+					"parameters": {
+						"variable": "FirstBossGunDestroyed"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 731138114000461,
+					"parameters": {
+						"variable": "SecondBossGunsDestroyed",
+						"value": "true"
+					}
+				}
+			],
+			"sid": 509723079423127
 		}
 	],
 	"sid": 718659902411894

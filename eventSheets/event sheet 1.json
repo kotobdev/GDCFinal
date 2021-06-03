@@ -668,6 +668,7 @@
 							"id": "play",
 							"objectClass": "Audio",
 							"sid": 772035163337957,
+							"disabled": true,
 							"parameters": {
 								"audio-file": "esploodeywoodey",
 								"loop": "looping",
@@ -1068,6 +1069,16 @@
 							}
 						},
 						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 388720190623721,
+							"parameters": {
+								"first-value": "LayoutName",
+								"comparison": 0,
+								"second-value": "\"Layout 1\""
+							}
+						},
+						{
 							"id": "repeat",
 							"objectClass": "System",
 							"sid": 143376129966158,
@@ -1262,6 +1273,16 @@
 						"variable": "isDoingTheThing"
 					},
 					"isInverted": true
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 466986445058084,
+					"parameters": {
+						"first-value": "LayoutName",
+						"comparison": 0,
+						"second-value": "\"Layout 1\""
+					}
 				}
 			],
 			"actions": [

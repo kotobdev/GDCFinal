@@ -1,0 +1,68 @@
+{
+	"name": "bossgun",
+	"plugin-id": "Sprite",
+	"sid": 607671778151181,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "isFiring",
+			"type": "boolean",
+			"desc": "take a wild guess",
+			"sid": 745588129257110
+		},
+		{
+			"name": "health",
+			"type": "number",
+			"desc": "",
+			"sid": 175372229650197
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Turret",
+			"name": "Turret",
+			"sid": 258978836467860
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 8,
+						"height": 8,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 1364410,
+						"collisionPoly": {
+							"points": [
+								0,
+								1,
+								0,
+								0,
+								1,
+								0,
+								1,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 213837363670559,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

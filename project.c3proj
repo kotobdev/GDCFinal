@@ -160,14 +160,6 @@
 		},
 		{
 			"type": "effect",
-			"id": "glowhorizontal",
-			"name": "Glow horizontal",
-			"author": "Scirra",
-			"version": "r241",
-			"bundled": false
-		},
-		{
-			"type": "effect",
 			"id": "swirl",
 			"name": "Swirl",
 			"author": "Brad Larson",
@@ -244,7 +236,9 @@
 			"Sprite2",
 			"Text4",
 			"TiledBackground2",
-			"Sprite4"
+			"Sprite4",
+			"MainBoss",
+			"bossgun"
 		],
 		"subfolders": []
 	},

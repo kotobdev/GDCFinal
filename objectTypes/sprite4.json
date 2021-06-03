@@ -7,10 +7,6 @@
 	"behaviorTypes": [],
 	"effectTypes": [
 		{
-			"effectId": "glowhorizontal",
-			"name": "GlowHorizontal"
-		},
-		{
 			"effectId": "swirl",
 			"name": "Swirl"
 		}
