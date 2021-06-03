@@ -160,6 +160,22 @@
 		},
 		{
 			"type": "effect",
+			"id": "glowhorizontal",
+			"name": "Glow horizontal",
+			"author": "Scirra",
+			"version": "r241",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "swirl",
+			"name": "Swirl",
+			"author": "Brad Larson",
+			"version": "r241",
+			"bundled": false
+		},
+		{
+			"type": "effect",
 			"id": "scanlines",
 			"name": "Scan lines",
 			"author": "Scirra",
@@ -226,7 +242,9 @@
 			"Text3",
 			"ToBeContinuedText",
 			"Sprite2",
-			"Text4"
+			"Text4",
+			"TiledBackground2",
+			"Sprite4"
 		],
 		"subfolders": []
 	},
@@ -240,7 +258,8 @@
 		"items": [
 			"Layout 1",
 			"MainMenu",
-			"ToBeContinued"
+			"ToBeContinued",
+			"bosslayout"
 		],
 		"subfolders": []
 	},
@@ -248,7 +267,8 @@
 		"items": [
 			"Event sheet 1",
 			"Event sheet 2",
-			"Event sheet 3"
+			"Event sheet 3",
+			"Event sheet 4"
 		],
 		"subfolders": []
 	},
@@ -313,6 +333,11 @@
 					"name": "FinalGameLoopMain.webm",
 					"type": "audio/webm; codecs=opus",
 					"sid": 173789714385575
+				},
+				{
+					"name": "gamebossmusicloop.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 476665800707617
 				}
 			],
 			"subfolders": []

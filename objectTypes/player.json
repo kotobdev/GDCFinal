@@ -2,7 +2,7 @@
 	"name": "Player",
 	"plugin-id": "Sprite",
 	"sid": 548555084060163,
-	"isGlobal": false,
+	"isGlobal": true,
 	"instanceVariables": [
 		{
 			"name": "RandNum",

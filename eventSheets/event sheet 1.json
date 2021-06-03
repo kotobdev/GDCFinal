@@ -217,6 +217,211 @@
 		},
 		{
 			"eventType": "group",
+			"disabled": true,
+			"title": "oopsies this code probably shouldn't be used anymore :)",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 846783914948526,
+							"parameters": {
+								"variable": "BossDestroyed"
+							}
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 889455163252302,
+							"parameters": {
+								"variable": "isDoingTheThing"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 768342172143502,
+							"parameters": {
+								"variable": "isDoingTheThing",
+								"value": "true"
+							}
+						},
+						{
+							"id": "set-layout-effect-parameter",
+							"objectClass": "System",
+							"sid": 699069331326602,
+							"parameters": {
+								"effect": "\"AdjustHSL\"",
+								"parameter-index": "2",
+								"value": "150"
+							}
+						},
+						{
+							"id": "set-time-scale",
+							"objectClass": "System",
+							"sid": 153578991374587,
+							"parameters": {
+								"time-scale": "0.5"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 788013794166516,
+							"parameters": {
+								"seconds": "1"
+							}
+						},
+						{
+							"id": "set-layout-effect-parameter",
+							"objectClass": "System",
+							"sid": 177528050055072,
+							"parameters": {
+								"effect": "\"AdjustHSL\"",
+								"parameter-index": "2",
+								"value": "160"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 984365195861375,
+							"parameters": {
+								"seconds": "1"
+							}
+						},
+						{
+							"id": "set-layout-effect-parameter",
+							"objectClass": "System",
+							"sid": 260959296644349,
+							"parameters": {
+								"effect": "\"AdjustHSL\"",
+								"parameter-index": "2",
+								"value": "170"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 978966078966989,
+							"parameters": {
+								"seconds": "1"
+							}
+						},
+						{
+							"id": "set-layout-effect-parameter",
+							"objectClass": "System",
+							"sid": 889095589297640,
+							"parameters": {
+								"effect": "\"AdjustHSL\"",
+								"parameter-index": "2",
+								"value": "180"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 359984345480593,
+							"parameters": {
+								"seconds": "1"
+							}
+						},
+						{
+							"id": "set-layout-effect-parameter",
+							"objectClass": "System",
+							"sid": 824258629328674,
+							"parameters": {
+								"effect": "\"AdjustHSL\"",
+								"parameter-index": "2",
+								"value": "200"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 981316356764066,
+							"parameters": {
+								"seconds": "1"
+							}
+						},
+						{
+							"id": "set-time-scale",
+							"objectClass": "System",
+							"sid": 249658014101751,
+							"parameters": {
+								"time-scale": "1"
+							}
+						},
+						{
+							"id": "set-layout-effect-parameter",
+							"objectClass": "System",
+							"sid": 146080450991978,
+							"parameters": {
+								"effect": "\"AdjustHSL\"",
+								"parameter-index": "2",
+								"value": "100"
+							}
+						},
+						{
+							"id": "stop-all",
+							"objectClass": "Audio",
+							"sid": 362463879324350
+						},
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 113154317991255,
+							"parameters": {
+								"layout": "ToBeContinued"
+							}
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 130686242714299,
+							"parameters": {
+								"variable": "isDoingTheThing",
+								"value": "false"
+							}
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 819000425411002,
+							"parameters": {
+								"variable": "BossDestroyed",
+								"value": "false"
+							}
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 560740764536552,
+							"parameters": {
+								"variable": "BossSpawned",
+								"value": "false"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "i hate this code"
+						}
+					],
+					"sid": 916149006304518,
+					"disabled": true
+				}
+			],
+			"sid": 873932120931362
+		},
+		{
+			"eventType": "group",
 			"disabled": false,
 			"title": "Enemy Damage Code",
 			"description": "Code for the different ways enemies take damage",
@@ -429,6 +634,18 @@
 						{
 							"type": "comment",
 							"text": "Enemy destruction logic. Todo: add global score variable"
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 310844807026346,
+							"parameters": {
+								"object-to-create": "Sprite4",
+								"layer": "0",
+								"x": "Boss1.X",
+								"y": "Boss1.Y",
+								"create-hierarchy": false
+							}
 						},
 						{
 							"id": "destroy",
@@ -1448,6 +1665,16 @@
 					"id": "on-start-of-layout",
 					"objectClass": "System",
 					"sid": 657993264206899
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 706530819988503,
+					"parameters": {
+						"first-value": "LayoutName",
+						"comparison": 0,
+						"second-value": "\"Layout 1\""
+					}
 				}
 			],
 			"actions": [
@@ -1543,7 +1770,7 @@
 			"actions": [
 				{
 					"type": "comment",
-					"text": "Turms off text after two seconds. It doesn't work when picking up multiple ComputerParts in two seconds, but that shouldn't happen in the finished game anyways."
+					"text": "Turms off text after two seconds. It doesn't work when picking up multiple ComputerParts in two seconds, but that shouldn't happen in the finished game anyways. EDIT: okay so that does happen but im too lazy to fix this stuff tbh"
 				},
 				{
 					"id": "wait",
@@ -1641,6 +1868,16 @@
 						"variable": "BossSpawned"
 					},
 					"isInverted": true
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 298385220654741,
+					"parameters": {
+						"first-value": "LayoutName",
+						"comparison": 0,
+						"second-value": "\"Layout 1\""
+					}
 				}
 			],
 			"actions": [
@@ -1696,208 +1933,28 @@
 			"sid": 896946680548463
 		},
 		{
-			"eventType": "group",
-			"disabled": false,
-			"title": "oopsies this code probably shouldn't be used anymore :)",
-			"description": "",
-			"isActiveOnStart": true,
-			"children": [
+			"eventType": "block",
+			"conditions": [
 				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 272965744666786,
-							"parameters": {
-								"variable": "BossDestroyed"
-							}
-						},
-						{
-							"id": "compare-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 870123399950201,
-							"parameters": {
-								"variable": "isDoingTheThing"
-							},
-							"isInverted": true
-						}
-					],
-					"actions": [
-						{
-							"id": "set-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 278204005005555,
-							"parameters": {
-								"variable": "isDoingTheThing",
-								"value": "true"
-							}
-						},
-						{
-							"id": "set-layout-effect-parameter",
-							"objectClass": "System",
-							"sid": 668000591744813,
-							"parameters": {
-								"effect": "\"AdjustHSL\"",
-								"parameter-index": "2",
-								"value": "150"
-							}
-						},
-						{
-							"id": "set-time-scale",
-							"objectClass": "System",
-							"sid": 289815211299346,
-							"parameters": {
-								"time-scale": "0.5"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 309747308652530,
-							"parameters": {
-								"seconds": "1"
-							}
-						},
-						{
-							"id": "set-layout-effect-parameter",
-							"objectClass": "System",
-							"sid": 538974613164434,
-							"parameters": {
-								"effect": "\"AdjustHSL\"",
-								"parameter-index": "2",
-								"value": "160"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 846965428148029,
-							"parameters": {
-								"seconds": "1"
-							}
-						},
-						{
-							"id": "set-layout-effect-parameter",
-							"objectClass": "System",
-							"sid": 899280449748668,
-							"parameters": {
-								"effect": "\"AdjustHSL\"",
-								"parameter-index": "2",
-								"value": "170"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 470948740537977,
-							"parameters": {
-								"seconds": "1"
-							}
-						},
-						{
-							"id": "set-layout-effect-parameter",
-							"objectClass": "System",
-							"sid": 514891734981998,
-							"parameters": {
-								"effect": "\"AdjustHSL\"",
-								"parameter-index": "2",
-								"value": "180"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 144811545117983,
-							"parameters": {
-								"seconds": "1"
-							}
-						},
-						{
-							"id": "set-layout-effect-parameter",
-							"objectClass": "System",
-							"sid": 148877832571476,
-							"parameters": {
-								"effect": "\"AdjustHSL\"",
-								"parameter-index": "2",
-								"value": "200"
-							}
-						},
-						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 146428077967545,
-							"parameters": {
-								"seconds": "1"
-							}
-						},
-						{
-							"id": "set-time-scale",
-							"objectClass": "System",
-							"sid": 118733962201929,
-							"parameters": {
-								"time-scale": "1"
-							}
-						},
-						{
-							"id": "set-layout-effect-parameter",
-							"objectClass": "System",
-							"sid": 787163477222081,
-							"parameters": {
-								"effect": "\"AdjustHSL\"",
-								"parameter-index": "2",
-								"value": "100"
-							}
-						},
-						{
-							"id": "stop-all",
-							"objectClass": "Audio",
-							"sid": 197622905694939
-						},
-						{
-							"id": "go-to-layout",
-							"objectClass": "System",
-							"sid": 950138045515867,
-							"parameters": {
-								"layout": "ToBeContinued"
-							}
-						},
-						{
-							"id": "set-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 561727380033359,
-							"parameters": {
-								"variable": "isDoingTheThing",
-								"value": "false"
-							}
-						},
-						{
-							"id": "set-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 942158331051504,
-							"parameters": {
-								"variable": "BossDestroyed",
-								"value": "false"
-							}
-						},
-						{
-							"id": "set-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 225493238175464,
-							"parameters": {
-								"variable": "BossSpawned",
-								"value": "false"
-							}
-						},
-						{
-							"type": "comment",
-							"text": "i hate this code"
-						}
-					],
-					"sid": 851449986951188
+					"id": "on-collision-with-another-object",
+					"objectClass": "Sprite4",
+					"sid": 286939366923757,
+					"parameters": {
+						"object": "Player"
+					}
 				}
 			],
-			"sid": 501081292323856
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 979652715668433,
+					"parameters": {
+						"layout": "bosslayout"
+					}
+				}
+			],
+			"sid": 474300786838504
 		}
 	],
 	"sid": 134333933306943

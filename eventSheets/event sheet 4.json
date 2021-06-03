@@ -1,0 +1,76 @@
+{
+	"name": "Event sheet 4",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "Event sheet 1"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 102883700093780
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 194189793993698,
+					"parameters": {
+						"first-value": "LayoutName",
+						"comparison": 0,
+						"second-value": "\"bosslayout\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "stop-all",
+					"objectClass": "Audio",
+					"sid": 112935059331770
+				},
+				{
+					"id": "set-volume",
+					"objectClass": "Audio",
+					"sid": 761446249244403,
+					"parameters": {
+						"tag": "\"drumloop\"",
+						"db": "-999"
+					}
+				},
+				{
+					"id": "set-volume",
+					"objectClass": "Audio",
+					"sid": 454495683009439,
+					"parameters": {
+						"tag": "\"mainloop\"",
+						"db": "-999"
+					}
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 819390754293684,
+					"parameters": {
+						"audio-file": "gamebossmusicloop",
+						"loop": "looping",
+						"volume": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "Player",
+					"sid": 716824567771463,
+					"parameters": {
+						"width": "Player.Width/2",
+						"height": "Player.Height/2"
+					}
+				}
+			],
+			"sid": 710569934519135
+		}
+	],
+	"sid": 718659902411894
+}
