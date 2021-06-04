@@ -199,48 +199,6 @@
 					}
 				},
 				{
-					"type": "Text2",
-					"properties": {
-						"text": "[b]READ:[/b]\nRespawning DOES NOT WORK right now!\n(Global objects suck)\nReload the page to play again!\n",
-						"enable-bbcode": true,
-						"font": "Arial",
-						"size": 10,
-						"line-height": 0,
-						"bold": false,
-						"italic": false,
-						"color": [
-							1,
-							0,
-							0,
-							1
-						],
-						"horizontal-alignment": "center",
-						"vertical-alignment": "top",
-						"wrapping": "word",
-						"initially-visible": true,
-						"origin": "top-left"
-					},
-					"uid": 24,
-					"instanceVariables": {},
-					"behaviors": {},
-					"world": {
-						"x": 327,
-						"y": 186,
-						"width": 200,
-						"height": 96,
-						"originX": 0,
-						"originY": 0,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
 					"type": "Text3",
 					"properties": {
 						"text": "Made by Dhruv, Adam, and Eli",
@@ -314,7 +272,7 @@
 				{
 					"type": "Text4",
 					"properties": {
-						"text": "[b]CHANGELOG[/b]\n-Some new sprites\n-Menu improvements\n-New Upgrade\n-Final Level\n-Final Level Music\n\n-Broke respawning :(\n\n-no seriously it's super broken and I have no idea how to fix it",
+						"text": "[b]CHANGELOG[/b]\n-Some new sprites\n-Menu improvements\n-New Upgrade\n-Final Level\n-Final Level Music\n\n-Fixed respawning :D\n",
 						"enable-bbcode": true,
 						"font": "Arial",
 						"size": 12,
@@ -337,8 +295,8 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 10,
-						"y": 162,
+						"x": 35,
+						"y": 163,
 						"width": 200,
 						"height": 252,
 						"originX": 0,

@@ -293,23 +293,6 @@
 					"sid": 713369525877661
 				},
 				{
-					"id": "recreate-initial-objects",
-					"objectClass": "System",
-					"sid": 789514014122380,
-					"parameters": {
-						"object": "Player",
-						"from-x": "0",
-						"from-y": "0",
-						"to-x": "0",
-						"to-y": "0",
-						"source-layout": "\"\"",
-						"source-layer": "-1",
-						"offset-x": "0",
-						"offset-y": "0",
-						"create-hierarchy": false
-					}
-				},
-				{
 					"id": "restart-layout",
 					"objectClass": "System",
 					"sid": 579946111096044

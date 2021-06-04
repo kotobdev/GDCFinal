@@ -953,6 +953,42 @@
 					}
 				},
 				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 363692772608605,
+					"parameters": {
+						"variable": "FirstBossGunDestroyed",
+						"value": "false"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 274420546649803,
+					"parameters": {
+						"variable": "SecondBossGunsDestroyed",
+						"value": "false"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 881132236108828,
+					"parameters": {
+						"variable": "ThirdBossGunsDestroyed",
+						"value": "false"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 641400124285082,
+					"parameters": {
+						"variable": "Finish",
+						"value": "false"
+					}
+				},
+				{
 					"type": "comment",
 					"text": "i hate this code"
 				}

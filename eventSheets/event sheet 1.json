@@ -1310,6 +1310,14 @@
 			],
 			"actions": [
 				{
+					"id": "set-visible",
+					"objectClass": "Player",
+					"sid": 847015290210947,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
 					"type": "comment",
 					"text": "Player rotation. "
 				},
@@ -1734,6 +1742,36 @@
 			],
 			"sid": 445246720146650,
 			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 815096314547961,
+							"parameters": {
+								"first-value": "Player.Count",
+								"comparison": 0,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 572645507186898,
+							"parameters": {
+								"object-to-create": "Player",
+								"layer": "0",
+								"x": "0",
+								"y": "0",
+								"create-hierarchy": false
+							}
+						}
+					],
+					"sid": 831611508833412
+				},
 				{
 					"eventType": "block",
 					"conditions": [
