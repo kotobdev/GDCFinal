@@ -79,6 +79,14 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "video",
+			"name": "Video",
+			"author": "Scirra",
+			"version": "r241",
+			"bundled": false
+		},
+		{
 			"type": "behavior",
 			"id": "EightDir",
 			"name": "8 Direction",
@@ -238,7 +246,8 @@
 			"TiledBackground2",
 			"Sprite4",
 			"MainBoss",
-			"bossgun"
+			"bossgun",
+			"Video"
 		],
 		"subfolders": []
 	},
@@ -337,7 +346,13 @@
 			"subfolders": []
 		},
 		"video": {
-			"items": [],
+			"items": [
+				{
+					"name": "finalgameidle0001-0058.mp4",
+					"type": "video/mp4",
+					"sid": 800244878963772
+				}
+			],
 			"subfolders": []
 		},
 		"font": {

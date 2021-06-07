@@ -76,6 +76,14 @@
 						"variable": "RandNumStart",
 						"value": "(round(random(1,7)))"
 					}
+				},
+				{
+					"id": "set-looping",
+					"objectClass": "Video",
+					"sid": 463364946666557,
+					"parameters": {
+						"mode": "looping"
+					}
 				}
 			],
 			"sid": 377289565031942,

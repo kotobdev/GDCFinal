@@ -2,30 +2,55 @@
 	"name": "MainMenu",
 	"layers": [
 		{
+			"name": "vidlayer",
+			"overriden": 0,
+			"instances": [],
+			"sid": 597039325341965,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				1,
+				1,
+				1,
+				1
+			],
+			"isTransparent": true,
+			"parallaxX": 1,
+			"parallaxY": 1,
+			"scaleRate": 1,
+			"forceOwnTexture": false,
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"global": false
+		},
+		{
 			"name": "Layer 0",
 			"overriden": 0,
 			"instances": [
 				{
-					"type": "TiledBackground",
+					"type": "Video",
 					"properties": {
-						"initially-visible": true,
-						"origin": "top-left",
-						"wrap-horizontal": "repeat",
-						"wrap-vertical": "repeat",
-						"image-offset-x": 0,
-						"image-offset-y": 0,
-						"image-scale-x": 5,
-						"image-scale-y": 5,
-						"image-angle": 0
+						"webm-source": "",
+						"ogg-theora-source": "",
+						"h264-source": "finalgameidle0001-0058.mp4",
+						"autoplay": "yes",
+						"play-in-background": false,
+						"initially-visible": true
 					},
 					"uid": 18,
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": -4,
-						"y": -4,
-						"width": 1732,
-						"height": 977,
+						"x": 0,
+						"y": 0,
+						"width": 854,
+						"height": 480,
 						"originX": 0,
 						"originY": 0,
 						"color": [
@@ -33,9 +58,7 @@
 							1,
 							1,
 							1
-						],
-						"angle": 0,
-						"zElevation": 0
+						]
 					}
 				},
 				{
@@ -49,9 +72,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							0,
-							0,
-							0,
+							1,
+							1,
+							1,
 							1
 						],
 						"horizontal-alignment": "center",
@@ -167,9 +190,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							0,
-							0,
-							0,
+							1,
+							1,
+							1,
 							1
 						],
 						"horizontal-alignment": "left",
@@ -209,9 +232,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							0,
-							0,
-							0,
+							1,
+							1,
+							1,
 							1
 						],
 						"horizontal-alignment": "left",
@@ -241,35 +264,6 @@
 					}
 				},
 				{
-					"type": "Sprite2",
-					"properties": {
-						"initially-visible": true,
-						"initial-animation": "Animation 1",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 25,
-					"instanceVariables": {},
-					"behaviors": {},
-					"world": {
-						"x": 635,
-						"y": 225,
-						"width": 107,
-						"height": 93,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
 					"type": "Text4",
 					"properties": {
 						"text": "[b]CHANGELOG[/b]\n-Some new sprites\n-Menu improvements\n-New Upgrade\n-Final Level\n-Final Level Music\n\n-Fixed respawning :D\n",
@@ -280,9 +274,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							0,
-							0,
-							0,
+							1,
+							1,
+							1,
 							1
 						],
 						"horizontal-alignment": "left",
