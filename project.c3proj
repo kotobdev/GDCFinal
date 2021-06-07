@@ -247,7 +247,9 @@
 			"Sprite4",
 			"MainBoss",
 			"bossgun",
-			"Video"
+			"Video",
+			"Sprite5",
+			"KillsText"
 		],
 		"subfolders": []
 	},

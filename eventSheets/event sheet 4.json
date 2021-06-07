@@ -155,6 +155,15 @@
 						"y": "bossgun.Y",
 						"create-hierarchy": false
 					}
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 584948086375494,
+					"parameters": {
+						"variable": "Kills",
+						"value": "1"
+					}
 				}
 			],
 			"sid": 699037104669773,

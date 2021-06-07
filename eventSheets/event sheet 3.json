@@ -22,6 +22,14 @@
 					}
 				},
 				{
+					"id": "set-text",
+					"objectClass": "KillsText",
+					"sid": 550359610811332,
+					"parameters": {
+						"text": "\"Kills: \" & Kills"
+					}
+				},
+				{
 					"id": "wait",
 					"objectClass": "System",
 					"sid": 724930297049056,

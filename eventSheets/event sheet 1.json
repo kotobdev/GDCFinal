@@ -52,6 +52,16 @@
 			"sid": 460393767004042
 		},
 		{
+			"eventType": "variable",
+			"name": "Kills",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 966672556201826
+		},
+		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "TODO",
@@ -612,6 +622,15 @@
 								"y": "Enemy.Y",
 								"create-hierarchy": false
 							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 142081734733811,
+							"parameters": {
+								"variable": "Kills",
+								"value": "1"
+							}
 						}
 					],
 					"sid": 586076429744640
@@ -682,6 +701,15 @@
 							"parameters": {
 								"variable": "BossDestroyed",
 								"value": "true"
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 971704181878314,
+							"parameters": {
+								"variable": "Kills",
+								"value": "1"
 							}
 						}
 					],
